@@ -33,9 +33,6 @@ arr2.push(8)
 console.log(arr1)
 console.log(arr2)
 // it change the refrence as it store in heap
-
-
-
 // call = in parentheisis
 // apply = in array
 // bind  = 
