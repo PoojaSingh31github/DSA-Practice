@@ -37,4 +37,27 @@ for (let i = str.length-1;i>=0; i--){
  let reverse = s.split(" ").reverse().join(" ").split("").reverse().join("");
  console.log(reverse)
 
- 
+//  two sum
+
+var twoSum = function (nums, target) {
+  const obj = {};
+    for (let i = 0; i < nums.length; i++) {
+      console.log(nums[i], "index value in line 45")
+    const newNum = nums[i];
+    const compliment = target - newNum;
+        if (compliment in obj) {
+            console.log(obj, "obj in line 49")
+            console.log(compliment, "compliemnt is here line 50");
+            return [obj[compliment], i];
+        }
+        console.log(obj, "obj in line 53");
+        console.log(compliment, "compliemnt is here line 54");
+    obj[newNum] = i;
+  }
+  console.log(obj, "obj in line 57");
+  return null;
+};
+const nums = [2, 3, 4, 5, 6, 7]
+const target = 6
+const result = twoSum(nums, target);
+console.log(result); 
