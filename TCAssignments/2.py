@@ -17,6 +17,52 @@ for i in li:
 print("maximam:",maximam)  
 print("minimum:", minimum)      
 
+# List Methods
+# append()
+# extend()
+# insert()
+# remove()
+# pop()
+# clear()
+# index()
+# count()
+# sort()
+# reverse()
+# copy()
+
+# Tuple Methods
+# count()
+# index()
+
+# Dictionary Methods
+# keys()
+# values()
+# items()
+# get()
+# update()
+# pop()
+# clear()
+# popitem()
+# setdefault()
+# copy()
+
+
+# Set Methods
+# add()
+# remove()
+# discard()
+# pop()
+# clear()
+# union()
+# intersection()
+# difference()
+# symmetric_difference()
+# update()
+
+
+
+
+
 
 
 

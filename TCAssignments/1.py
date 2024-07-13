@@ -11,3 +11,7 @@ print(product)
 string = "hello"
 result = string.upper()
 print(result)
+
+
+# 17
+print(int(17**.5))
