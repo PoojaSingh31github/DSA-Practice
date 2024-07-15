@@ -24,6 +24,7 @@ a_dict = {"name": "Alice", "age": 25}
 a_set = {1, 2, 3, 4, 5}
 a_frozenset = frozenset({1, 2, 3, 4, 5})
 
+
 # Boolean Type
 a_bool = True
 
