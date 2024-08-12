@@ -1,0 +1,431 @@
+time complexity 
+def find_max(arr):
+    max_val = arr[0]
+    for num in arr:
+        if num > max_val:
+            max_val = num
+    return max_val
+
+                                                O(n)
+
+def append_to_list(arr, value):
+    arr.append(value)
+    return arr
+
+                                               O(1)
+
+def find_sum(arr):
+    total = 0
+    for num in arr:
+        total += num
+    return total
+
+                                               O(n)
+
+def print_pairs(arr):
+    for i in range(len(arr)):
+        for j in range(i + 1, len(arr)):
+            print(arr[i], arr[j])
+						O(n²)
+
+    for i in range(n):
+        for j in range(n):
+            print(i, j)
+
+
+						O(n²)
+
+def print_elements(arr):
+    for i in range(len(arr)):
+        print(arr[i])
+    for j in range(len(arr)):
+        print(arr[j])
+
+
+						O(n)
+
+def find_pair(arr, target):
+    arr.sort()
+    left, right = 0, len(arr) - 1
+    while left < right:
+        current_sum = arr[left] + arr[right]
+        if current_sum == target:
+            return True
+        elif current_sum < target:
+            left += 1
+        else:
+            right -= 1
+    return False
+
+
+
+						O(n log n)
+
+def reverse_array(arr):
+    left, right = 0, len(arr) - 1
+    while left < right:
+        arr[left], arr[right] = arr[right], arr[left]
+        left += 1
+        right -= 1
+
+
+						O(n)
+
+def subarray_sum(arr, target):
+    for i in range(len(arr)):
+        current_sum = 0
+        for j in range(i, len(arr)):
+            current_sum += arr[j]
+            if current_sum == target:
+                return True
+    return False
+
+
+						O(n²)
+
+def has_duplicates(arr):
+    seen = set()
+    for num in arr:
+        if num in seen:
+            return True
+        seen.add(num)
+    return False
+
+
+						O(n)
+
+def sum_2d_array(matrix):
+    total = 0
+    for row in matrix:
+        for num in row:
+            total += num
+    return total
+
+
+
+						O(m * n)
+
+def find_min(arr):
+    min_val = arr[0]
+    for num in arr:
+        if num < min_val:
+            min_val = num
+    return min_val
+
+
+						O(n)
+
+def is_palindrome(s):
+    for i in range(len(s)):
+        for j in range(i, len(s)):
+            substr = s[i:j+1]
+            if substr == substr[::-1]:
+                return True
+    return False
+
+
+						O(n³)
+
+def count_frequency(arr):
+    frequency = {}
+    for num in arr:
+        if num in frequency:
+            frequency[num] += 1
+        else:
+            frequency[num] = 1
+    return frequency
+
+
+						O(n)
+
+def print_all_pairs(arr):
+    for i in range(len(arr)):
+        for j in range(len(arr)):
+            print(arr[i], arr[j])
+
+
+						O(n²)
+
+def max_subarray_sum(arr):
+    max_sum = float('-inf')
+    for i in range(len(arr)):
+        current_sum = 0
+        for j in range(i, len(arr)):
+            current_sum += arr[j]
+            if current_sum > max_sum:
+                max_sum = current_sum
+    return max_sum
+
+
+						O(n²)
+
+def is_prime(n):
+    if n <= 1:
+        return False
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+
+						O(√n)
+
+def max_difference(arr):
+    max_diff = arr[1] - arr[0]
+    min_element = arr[0]
+    for i in range(1, len(arr)):
+        if arr[i] - min_element > max_diff:
+            max_diff = arr[i] - min_element
+        if arr[i] < min_element:
+            min_element = arr[i]
+    return max_diff
+   
+
+						O(n)
+
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+  
+
+						O(n)
+
+def count_occurrences(arr):
+    count = {}
+    for num in arr:
+        if num in count:
+            count[num] += 1
+        else:
+            count[num] = 1
+    return count
+  
+
+						O(n)
+
+What is a critical point in the context of calculus?
+
+The point at which a function reaches its highest or lowest value.
+
+Any point where the derivative of a function equals zero or does not exist.
+
+The point where a function intersects the x-axis.
+
+The maximum value of a function's derivative.
+
+
+						Any point where the derivative of a function equals zero or does not exist.
+
+How is the second derivative used to classify critical points?
+
+It determines the concavity of the function at the critical points.
+
+It calculates the slope of the tangent line at the critical points.
+
+It finds new critical points of the derivative function.
+
+It measures the rate of change of the function's slope.
+
+						It determines the concavity of the function at the critical points.
+
+ def cumulative_sums(arr):
+    cumulative = [0] * len(arr)
+    cumulative[0] = arr[0]
+    for i in range(1, len(arr)):
+        cumulative[i] = cumulative[i-1] + arr[i]
+    return cumulative
+  
+
+						O(n)
+
+ def cumulative_sums(arr):
+    cumulative = [0] * len(arr)
+    cumulative[0] = arr[0]
+    for i in range(1, len(arr)):
+        cumulative[i] = cumulative[i-1] + arr[i]
+    return cumulative
+  
+
+						O(n)
+
+def fibonacci(n):
+    fib = [0] * (n + 1)
+    fib[1] = 1
+    for i in range(2, n + 1):
+        fib[i] = fib[i-1] + fib[i-2]
+    return fib
+
+
+						O(n)
+
+def generate_subsets(nums):
+    subsets = []
+    n = len(nums)
+    for i in range(2**n):
+        subset = []
+        for j in range(n):
+            if (i & (1 << j)) > 0:
+                subset.append(nums[j])
+        subsets.append(subset)
+    return subsets
+
+
+						O(2ⁿ)
+
+def reverse_string(s):
+    if len(s) <= 1:
+        return s
+    else:
+        return reverse_string(s[1:]) + s[0]
+
+
+						O(n)
+
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+
+						O(√n)
+
+def max_difference(arr):
+    max_diff = arr[1] - arr[0]
+    min_element = arr[0]
+    for i in range(1, len(arr)):
+        if arr[i] - min_element > max_diff:
+            max_diff = arr[i] - min_element
+        if arr[i] < min_element:
+            min_element = arr[i]
+    return max_diff
+
+
+						O(n)
+
+def prefix_sum(arr):
+    prefix = [0] * len(arr)
+    prefix[0] = arr[0]
+    for i in range(1, len(arr)):
+        prefix[i] = prefix[i-1] + arr[i]
+    return prefix
+
+
+						O(n)
+
+def product_except_self(arr):
+    n = len(arr)
+    left_product = [1] * n
+    right_product = [1] * n
+    output = [1] * n
+    for i in range(1, n):
+        left_product[i] = left_product[i - 1] * arr[i - 1]
+    for i in range(n - 2, -1, -1):
+        right_product[i] = right_product[i + 1] * arr[i + 1]
+    for i in range(n):
+        output[i] = left_product[i] * right_product[i]
+    return output
+
+
+						O(n)
+
+
+def find_duplicates(arr):
+    duplicates = []
+    seen = set()
+    for num in arr:
+        if num in seen:
+            duplicates.append(num)
+        else:
+            seen.add(num)
+    return duplicates
+
+
+						O(n)
+
+def is_palindrome(s):
+    return s == s[::-1]
+
+
+						O(n)
+
+def permutations(s):
+    if len(s) <= 1:
+        return [s]
+    perms = []
+    for i in range(len(s)):
+        for perm in permutations(s[:i] + s[i+1:]):
+            perms.append(s[i] + perm)
+    return perms
+
+
+						O(n!)
+
+def are_all_unique(nums):
+    seen = set()
+    for num in nums:
+        if num in seen:
+            return False
+        seen.add(num)
+    return True
+
+
+						O(n)
+
+def longest_substring(s):
+    max_len = 0
+    start = 0
+    seen = {}
+    for end in range(len(s)):
+        if s[end] in seen:
+            start = max(start, seen[s[end]] + 1)
+        seen[s[end]] = end
+        max_len = max(max_len, end - start + 1)
+    return max_len
+
+
+						O(n)
+
+def two_sum(arr, target):
+    arr.sort()
+    left, right = 0, len(arr) - 1
+    pairs = []
+    while left < right:
+        current_sum = arr[left] + arr[right]
+        if current_sum == target:
+            pairs.append((arr[left], arr[right]))
+            left += 1
+            right -= 1
+        elif current_sum < target:
+            left += 1
+        else:
+            right -= 1
+    return pairs
+
+
+					O(n log n)
+
+def remove_duplicates(nums):
+    if not nums:
+        return 0
+    slow = 0
+    for fast in range(1, len(nums)):
+        if nums[fast] != nums[slow]:
+            slow += 1
+            nums[slow] = nums[fast]
+    return slow + 1
+
+
+					O(n)
