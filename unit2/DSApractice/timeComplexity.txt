@@ -26,14 +26,14 @@ def print_pairs(arr):
     for i in range(len(arr)):
         for j in range(i + 1, len(arr)):
             print(arr[i], arr[j])
-						O(n²)
+						                        O(n²)
 
     for i in range(n):
         for j in range(n):
             print(i, j)
 
 
-						O(n²)
+						                    O(n²)
 
 def print_elements(arr):
     for i in range(len(arr)):
@@ -42,7 +42,7 @@ def print_elements(arr):
         print(arr[j])
 
 
-						O(n)
+						                    O(n)
 
 def find_pair(arr, target):
     arr.sort()
@@ -59,7 +59,7 @@ def find_pair(arr, target):
 
 
 
-						O(n log n)
+						                O(n log n)
 
 def reverse_array(arr):
     left, right = 0, len(arr) - 1
@@ -69,10 +69,10 @@ def reverse_array(arr):
         right -= 1
 
 
-						O(n)
+						                O(n)
 
 def subarray_sum(arr, target):
-    for i in range(len(arr)):
+    for i in range(len(arr)):         
         current_sum = 0
         for j in range(i, len(arr)):
             current_sum += arr[j]
@@ -81,7 +81,7 @@ def subarray_sum(arr, target):
     return False
 
 
-						O(n²)
+						                                O(n²)
 
 def has_duplicates(arr):
     seen = set()
@@ -92,7 +92,7 @@ def has_duplicates(arr):
     return False
 
 
-						O(n)
+						              O(n)
 
 def sum_2d_array(matrix):
     total = 0
@@ -103,7 +103,7 @@ def sum_2d_array(matrix):
 
 
 
-						O(m * n)
+					            	O(m * n)
 
 def find_min(arr):
     min_val = arr[0]
@@ -113,7 +113,7 @@ def find_min(arr):
     return min_val
 
 
-						O(n)
+						        O(n)
 
 def is_palindrome(s):
     for i in range(len(s)):
@@ -124,7 +124,7 @@ def is_palindrome(s):
     return False
 
 
-						O(n³)
+						                O(n³)
 
 def count_frequency(arr):
     frequency = {}
@@ -136,7 +136,7 @@ def count_frequency(arr):
     return frequency
 
 
-						O(n)
+						            O(n)
 
 def print_all_pairs(arr):
     for i in range(len(arr)):
@@ -167,14 +167,14 @@ def is_prime(n):
     if n % 2 == 0 or n % 3 == 0:
         return False
     i = 5
-    while i * i <= n:
+    while i * i < n:
         if n % i == 0 or n % (i + 2) == 0:
             return False
         i += 6
     return True
 
 
-						O(√n)
+						        O(√n)
 
 def max_difference(arr):
     max_diff = arr[1] - arr[0]
@@ -280,7 +280,7 @@ def generate_subsets(nums):
     return subsets
 
 
-						O(2ⁿ)
+						O(n*2^n)
 
 def reverse_string(s):
     if len(s) <= 1:
@@ -362,7 +362,7 @@ def is_palindrome(s):
 						O(n)
 
 def permutations(s):
-    if len(s) <= 1:
+    if len(s) <= 1:   
         return [s]
     perms = []
     for i in range(len(s)):

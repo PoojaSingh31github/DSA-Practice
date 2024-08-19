@@ -1,27 +1,29 @@
-# arr=[1 , 4 , 3, 2 , 5 , 7]
-# k=9
-# n=len(arr)
+mat = [
+    [10, 19, 21, 32, 15, 5, 12],
+    [10, 19, 21, 32, 15, 5, 12],
+    [10, 19, 21, 32, 15, 5, 12],
+    [10, 19, 21, 32, 15, 5, 12],
+    [10, 19, 21, 32, 15, 5, 12],
+    [10, 19, 21, 32, 15, 5, 12],
+    [10, 19, 21, 32, 15, 5, 12],
+    [10, 19, 21, 32, 15, 5, 12]
+]
 
+n=len(mat)
+m=len(mat[0])
+print(n,m)
+for i in range(n-2):
+    for j in range(2):
+        # if mat[i][j]:
+        print(mat[j][i],end=" ")
 
-# for i in range(n):
-#     for j in range(i+1,n):
-#         sub_arr=arr[i:j]
-#         sum_of_arr=sum(sub_arr)
-#         print(sum_of_arr)
-        
-#     if sum_of_arr==k:
-#         print(True)
-            
+a,b=0,m-1
+while a<n and b>=0:
+    print(mat[a][b],end=" ")
+    a+=1
+    b-=1
 
-# for i in range(11):
-#     print(i)
-
-i=0
-while i<=10:
-    print(i)
-    i+=1
-
-
-
-
+for i in range(n-1,2,-1):
+    for j in range(m-1,m-3,-1):
+        print(mat[i][j],end=" ")
 
