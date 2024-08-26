@@ -1,7 +1,7 @@
 # find the maximum sum of all subarray of size k
-array=[1,2,3,4,3,4,6,8,9,5,10,12,14]
+array=[1,2,3,4,3,4,6,8,4,5,10,4,3,2,5,10,12,14]
 n=len(array)
-k= 4 #size of subarray
+k= 4          #size of subarray
 # brute force
 # maax_sum=0
 # for i in range(n-k+1):
@@ -23,7 +23,7 @@ k= 4 #size of subarray
 # print(res)    
 
 #Longest substring with at least k repeating characters
-#Subarrays Having Sum Less Than M
+#Subarrays Having Sum Less Than M   20
 
 #Find the size of largest sub-string which doesn't contains any repeated characters in given string
 head=0

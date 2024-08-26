@@ -1,74 +1,9 @@
-notes:- 
+notes:-  SQL
+~~~~~~~~~~~~
+
 https://oxidized-sphynx-2a8.notion.site/DB101-SQL-Master-Doc-e9c2ccf604ea49609f2bcd2d096cc26f
 
-__________________________________________________________________________________________________________________________________
+notes:- mongodb
+~~~~~~~~~~~~~~~
 
-Day 1: Database Basics
-Database: Organized collection of data.
-CRUD Operations:
-Create: INSERT INTO students (name, age) VALUES ('Alice', 22);
-Read: SELECT * FROM students;
-Update: UPDATE students SET age = 23 WHERE name = 'Alice';
-Delete: DELETE FROM students WHERE name = 'Alice';
-__________________________________________________________________________________________________________________________________
-
-
-Day 2: SQL Commands
-SELECT: SELECT name, age FROM students;
-INSERT: INSERT INTO students (name, age) VALUES ('Bob', 24);
-UPDATE: UPDATE students SET age = 25 WHERE name = 'Bob';
-DELETE: DELETE FROM students WHERE age < 20;
-ORDER BY: SELECT * FROM students ORDER BY age DESC;
-LIMIT: SELECT * FROM students LIMIT 5;
-__________________________________________________________________________________________________________________________________
-
-
-Day 3: Functions & Conditions
-String Functions: SELECT CONCAT(first_name, ' ', last_name) FROM users;
-Aggregate Functions: SELECT COUNT(*) FROM students;
-WHERE Clause: SELECT * FROM students WHERE age > 20;
-LIKE: SELECT * FROM students WHERE name LIKE 'A%';
-IN: SELECT * FROM students WHERE age IN (22, 23);
-BETWEEN: SELECT * FROM students WHERE age BETWEEN 20 AND 25;
-__________________________________________________________________________________________________________________________________
-
-
-Day 4: Grouping
-GROUP BY: SELECT age, COUNT(*) FROM students GROUP BY age;
-HAVING: SELECT age, COUNT(*) FROM students GROUP BY age HAVING COUNT(*) > 1;
-__________________________________________________________________________________________________________________________________
-
-
-Day 5: Relationships & ER Diagrams
-One-to-One: One user has one profile.
-One-to-Many: One author has many books.
-Many-to-Many: Students and courses (a student can enroll in many courses, and a course can have many students).
-INNER JOIN: SELECT students.name, courses.course_name FROM students INNER JOIN enrollments ON students.id = enrollments.student_id INNER JOIN courses ON enrollments.course_id = courses.id;
-LEFT JOIN: SELECT students.name, enrollments.course_id FROM students LEFT JOIN enrollments ON students.id = enrollments.student_id;
-RIGHT JOIN: SELECT courses.course_name, enrollments.student_id FROM courses RIGHT JOIN enrollments ON courses.id = enrollments.course_id;
-__________________________________________________________________________________________________________________________________
-
-
-Day 6: Advanced JOINs & Design
-CROSS JOIN: SELECT * FROM students CROSS JOIN courses;
-FULL OUTER JOIN: SELECT students.name, courses.course_name FROM students FULL OUTER JOIN enrollments ON students.id = enrollments.student_id FULL OUTER JOIN courses ON enrollments.course_id = courses.id;
-Normalization: Reducing data redundancy.
-Primary Key: student_id in students table.
-Foreign Key: course_id in enrollments table referencing courses table.
-__________________________________________________________________________________________________________________________________
-
-
-Day 7: Subqueries, Views, CTEs
-Subqueries: SELECT name FROM students WHERE age = (SELECT MAX(age) FROM students);
-Views: CREATE VIEW student_view AS SELECT name, age FROM students WHERE age > 20;
-CTEs: WITH RecentStudents AS (SELECT name, age FROM students ORDER BY age DESC LIMIT 5) SELECT * FROM RecentStudents;
-__________________________________________________________________________________________________________________________________
-
-
-Day 8: Window Functions & Design
-ROW_NUMBER(): SELECT name, ROW_NUMBER() OVER (ORDER BY age) AS row_num FROM students;
-RANK(): SELECT name, RANK() OVER (ORDER BY age DESC) AS rank FROM students;
-Indexing: CREATE INDEX idx_student_age ON students(age);
-Optimization: Techniques like query tuning, indexing, etc.
-__________________________________________________________________________________________________________________________________
-
+https://oxidized-sphynx-2a8.notion.site/DB-101-Mongodb-Master-Doc-fb9618aadab247439ed5669351ec543f

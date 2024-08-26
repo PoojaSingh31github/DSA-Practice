@@ -45,10 +45,10 @@ def print_elements(arr):
 						                    O(n)
 
 def find_pair(arr, target):
-    arr.sort()
+    arr.sort()                                o(logn)
     left, right = 0, len(arr) - 1
     while left < right:
-        current_sum = arr[left] + arr[right]
+        current_sum = arr[left] + arr[right]  
         if current_sum == target:
             return True
         elif current_sum < target:
