@@ -429,3 +429,14 @@ def remove_duplicates(nums):
 
 
 					O(n)
+
+n = 1000  # Example size of n
+i = 1
+while i < n:
+    j = 1
+    while j < n:
+        # Some constant time operation
+        print("i:", i, "j:", j)
+        j *= 3
+    i *= 3
+                                                    O(log^2n)

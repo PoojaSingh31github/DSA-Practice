@@ -11,15 +11,17 @@ n=len(array)
 #             print(i, "=",array[i],j,"=",array[j])
 #             break
 
-# array =[3,5,8,2,6,9]             2 3 5 6 8 9   6 9 
+# array =[3,5,8,2,6,9]             #2 3 5 6 8 9   6 9 
 i=0
 j=n-1
 flag=False
 array.sort()
 while i<j:
     s=array[i]+array[j]
+    print(i,j)
     if s==target:
         print(array[i],array[j])
+       
         flag=True
         i+=1
         j-=1

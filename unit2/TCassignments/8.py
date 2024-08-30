@@ -1,19 +1,19 @@
 # # subarray substring
-# array=[1,2,3,4,3,4,6,8,9,5,10,12,14]
-#     # 0 1 2 3 4 5 6 
+array=[1,2,3,4,3,4,6,8,9,5,10,12,14]
+    # 0 1 2 3 4 5 6 
       
-# n=len(array)
-# k=4
-# s=0
-# for j in range(k):
-#     s+=array[j]
-# print(s)   
-# max_sum=s
-# for j in range(k,n):  #k=4  j=4  5 6 6 
-#     s = s-array[j-k] + array[j]
-#     if max_sum<s:
-#         max_sum=s
-# print(max_sum)
+n=len(array)
+k=4
+s=0
+for j in range(k):
+    s+=array[j]
+print(s)   
+max_sum=s
+for j in range(k,n):  #k=4  j=4  5 6 6 
+    s = s-array[j-k] + array[j]
+    if max_sum<s:
+        max_sum=s
+print(max_sum)
 
 
 
