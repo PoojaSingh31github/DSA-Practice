@@ -1,0 +1,125 @@
+1. Brute Force
+Two Sum (Problem #1)
+3Sum (Problem #15)
+4Sum (Problem #18)
+Longest Substring Without Repeating Characters (Problem #3)
+Permutations (Problem #46)
+Combination Sum (Problem #39)
+Subsets (Problem #78)
+Letter Combinations of a Phone Number (Problem #17)
+Palindrome Partitioning (Problem #131)
+Word Search (Problem #79)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2. Two Pointer
+Two Sum II - Input Array Is Sorted (Problem #167)
+3Sum (Problem #15)
+Container With Most Water (Problem #11)
+Remove Duplicates from Sorted Array (Problem #26)
+Valid Palindrome (Problem #125)
+Merge Sorted Array (Problem #88)
+Minimum Size Subarray Sum (Problem #209)
+Longest Substring Without Repeating Characters (Problem #3)
+Move Zeroes (Problem #283)
+Trapping Rain Water (Problem #42)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+3. Sliding Window
+Longest Substring Without Repeating Characters (Problem #3)
+Minimum Window Substring (Problem #76)
+Longest Repeating Character Replacement (Problem #424)
+Permutation in String (Problem #567)
+Sliding Window Maximum (Problem #239)
+Find All Anagrams in a String (Problem #438)
+Longest Subarray of 1's After Deleting One Element (Problem #1493)
+Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit (Problem #1438)
+Longest Subarray with Sum Divisible by K (Problem #974)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+4. Stack
+Valid Parentheses (Problem #20)
+Min Stack (Problem #155)
+Evaluate Reverse Polish Notation (Problem #150)
+Daily Temperatures (Problem #739)
+Next Greater Element I (Problem #496)
+Largest Rectangle in Histogram (Problem #84)
+Trapping Rain Water (Problem #42)
+Remove K Digits (Problem #402)
+Asteroid Collision (Problem #735)
+Basic Calculator II (Problem #227)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+5. Queue
+Implement Queue using Stacks (Problem #232)
+Sliding Window Maximum (Problem #239)
+Number of Recent Calls (Problem #933)
+Rotting Oranges (Problem #994)
+Design Circular Queue (Problem #622)
+Course Schedule (Problem #207)
+Binary Tree Level Order Traversal (Problem #102)
+Perfect Squares (Problem #279)
+Minimum Number of Refueling Stops (Problem #871)
+Jump Game VI (Problem #1696)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+6. Linked List (Single)
+Reverse Linked List (Problem #206)
+Merge Two Sorted Lists (Problem #21)
+Remove Nth Node From End of List (Problem #19)
+Linked List Cycle (Problem #141)
+Palindrome Linked List (Problem #234)
+Add Two Numbers (Problem #2)
+Intersection of Two Linked Lists (Problem #160)
+Copy List with Random Pointer (Problem #138)
+Flatten a Multilevel Doubly Linked List (Problem #430)
+Reverse Nodes in k-Group (Problem #25)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+7. Linked List (Doubly)
+Flatten a Multilevel Doubly Linked List (Problem #430)
+LRU Cache (Problem #146)
+Design Browser History (Problem #1472)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+8. Greedy
+Assign Cookies (Problem #455)
+Gas Station (Problem #134)
+Jump Game (Problem #55)
+Jump Game II (Problem #45)
+Partition Labels (Problem #763)
+Candy (Problem #135)
+Best Time to Buy and Sell Stock II (Problem #122)
+Minimum Number of Arrows to Burst Balloons (Problem #452)
+Non-overlapping Intervals (Problem #435)
+Reorganize String (Problem #767)
+
+min numer of coin 
+shop in candy store
+assign mice to holes
+min rotate to unlock circular lock
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+9. Binary Search
+Binary Search (Problem #704)
+Search Insert Position (Problem #35)
+Find Minimum in Rotated Sorted Array (Problem #153)
+Find Peak Element (Problem #162)
+Search in Rotated Sorted Array (Problem #33)
+Median of Two Sorted Arrays (Problem #4)
+Koko Eating Bananas (Problem #875)
+Guess Number Higher or Lower (Problem #374)
+Search a 2D Matrix (Problem #74)
+Find K-th Smallest Pair Distance (Problem #719)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+10. Recursion
+Merge Two Sorted Lists (Problem #21)
+Letter Combinations of a Phone Number (Problem #17)
+Generate Parentheses (Problem #22)
+Permutations (Problem #46)
+Combination Sum (Problem #39)
+Sudoku Solver (Problem #37)
+Word Search (Problem #79)
+Subsets (Problem #78)
+Climbing Stairs (Problem #70)
+Unique Paths (Problem #62)

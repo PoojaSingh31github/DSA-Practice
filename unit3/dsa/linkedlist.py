@@ -64,6 +64,35 @@ def addElementBefore(head,target, data):
     print(f"Element {target} not found in the list.")  # If target not found
     return head
 
-# 
+# node practiceeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def insertNodeAtHead(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+
+    def printList(self):
+        current = self.head
+        while current:
+            print(current.data,"vbnm", end=" ")
+            current = current.next
+        print()
+
+if __name__ == "__main__":
+    ll = LinkedList()
+    n = 4
+    value = [1, 2, 4, 5]
+    for i in value:
+        ll.insertNodeAtHead(i)
+        ll.printList()
+
 
 

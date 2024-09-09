@@ -7,3 +7,38 @@ notes:- mongodb
 ~~~~~~~~~~~~~~~
 
 https://oxidized-sphynx-2a8.notion.site/DB-101-Mongodb-Master-Doc-fb9618aadab247439ed5669351ec543f
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let name="pooja"
+
+a=2,b=3,c=4
+
+fun{
+    let
+}
+
+
