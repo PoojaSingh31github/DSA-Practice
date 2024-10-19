@@ -27,15 +27,6 @@ function find_path(mat, i, j, path, res) {
 }
 function combination(mat, n) {
     const res = []
-    // if (mat[0][0] == 0 || mat[n - 1][n - 1] == 0) {
-    //     return []
-    // }
-    // if (mat[0][1] == 0 && mat[1][0] == 0) {
-    //     return []
-    // }
-    // if (mat[n - 1][n - 2] == 0 && mat[n - 2][n - 1] == 0) {
-    //     return []
-    // }
     find_path(mat, 0, 0, "", res)
     return res
 }
