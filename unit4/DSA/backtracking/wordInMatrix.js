@@ -35,7 +35,7 @@ let n = 3, m = 4;
 let board = [
     ['A', 'B', 'C', 'E'],
     ['S', 'F', 'C', 'S'],
-    ['A', 'D', 'E', 'E']
+    ['A', 'N', 'E', 'E']
 ];
 let word = "SEEN";
 console.log(exist(board, word)); // Output: true

@@ -19,5 +19,5 @@ def solveNQueens(n):
 
     return backtrack(0, set(), set(), set())
 
-n = int(input())
+n = 4
 print(solveNQueens(n))
