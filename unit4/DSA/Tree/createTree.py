@@ -10,7 +10,7 @@ def insert(root, val):
     if root is None:
         return Node(val)
     else:
-        if val < root.val:
+        if val > root.val:
             root.left = insert(root.left, val)
         else:
             root.right = insert(root.right, val)
