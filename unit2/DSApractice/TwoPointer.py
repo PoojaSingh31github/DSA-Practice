@@ -81,7 +81,7 @@ while i<n1 and j<n2:
 print(ans)            
 
 #5. remove duplicate from sorted array
-a=[2,2,3,4,4,5,6,66,77,8,9,9,]
+a=[2,2,3,4,4,5,6,66,77,8,9,9,1]
 n=len(a)
 j=0
 for i in range(n-1):
