@@ -30,7 +30,6 @@ def create_weighted_adjacency_matrix(vertices, edges, weights):
     
     return adjacency_matrix
 
-# Example usage
 vertices = [1, 2, 3, 4]
 edges = [(1, 2), (2, 3), (3, 4), (4, 1)]
 weights = [5, 3, 2, 4]

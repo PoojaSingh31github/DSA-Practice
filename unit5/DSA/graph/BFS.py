@@ -23,9 +23,6 @@ def bfs(graph, start):
                 visited[neighbor] = True
                 queue.append(neighbor)  # Enqueue the neighbor
 
-# Example usage:
-# Graph represented as an adjacency list
-# 0: [1, 2], 1: [0, 3, 4], 2: [0], 3: [1], 4: [1]
 graph = {
     0: [1, 2],
     1: [0, 3, 4],
@@ -34,5 +31,4 @@ graph = {
     4: [1]
 }
 
-# Starting node is 0
 bfs(graph, 0)

@@ -13,7 +13,6 @@ def create_adjacency_list(vertices, edges):
 
 
 
-# Example usage
 vertices = [1, 2, 3, 4, 5]
 edges = [(1, 2), (1, 3), (3, 4), (4, 5)]
 
