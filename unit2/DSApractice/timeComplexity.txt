@@ -1,3 +1,7 @@
+pyhton debugger:
+https://pythontutor.com/render.html#mode=display
+
+
 time complexity 
 def find_max(arr):
     max_val = arr[0]

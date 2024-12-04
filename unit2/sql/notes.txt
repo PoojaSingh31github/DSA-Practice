@@ -9,6 +9,10 @@ notes:- mongodb
 https://oxidized-sphynx-2a8.notion.site/DB-101-Mongodb-Master-Doc-fb9618aadab247439ed5669351ec543f
 
 
+in class notes
+https://drive.google.com/file/d/11AkyWXYUThB-LkEEgb10G-NXomGQ5bCT/view
+
+
 
 
 
