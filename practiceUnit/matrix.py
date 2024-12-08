@@ -112,5 +112,22 @@ for d in range(2 * n - 1):
         r += 1
         c -= 1
 
-print(result)      
+print(result)    
+  
+# second approch way of wrting 
+res = []
+for col in range(n):
+    i,j =0,col
+    while i<n and j>=0:
+        res.append(matrix[i][j])
+        i+=1
+        j-=1
+
+for row in range(1,n):
+    i,j = row, n-1
+    while i<n and j>=0:
+        res.append(matrix[i][j])
+        i+=1
+        j-=1
     
+print(" ".join(map(str,res)))      

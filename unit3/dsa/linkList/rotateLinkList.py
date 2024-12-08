@@ -35,11 +35,10 @@ class LinkedList:
 
         # Step 3: Calculate effective k (k % length)
         k = k % length
-        steps_to_new_head = length - k
 
         # Step 4: Traverse to the (length - k)-th node
         curr = self.head
-        for _ in range(steps_to_new_head - 1):
+        for _ in range(length - k - 1):
             curr = curr.next
 
         # Step 5: Make the (length - k)-th node the new tail, and set new head
