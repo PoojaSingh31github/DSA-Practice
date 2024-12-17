@@ -2,8 +2,13 @@ use Ref notes:-
 
 https://masai-school.notion.site/Class-Notes-82cd5828470f4e2094b5a91be6a78cfd
 
+delhi drive notes:-
+
+https://complex-saturn-89b.notion.site/Nov-Drive-Resources-13e9e53bea1e80cda64fc963ed1e876d
+
 
 ````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
 
 Student Activities
 Create a Layout Component: Use children props to create a reusable Layout component for consistent styling across pages.
