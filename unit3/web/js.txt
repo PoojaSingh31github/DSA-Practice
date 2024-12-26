@@ -10,3 +10,162 @@
 5. optional chaining
 6. implicity  and explicite
 7. defalut parameter in funtion
+
+event handlers
+Here’s a comprehensive list of JavaScript DOM Event Listeners categorized by their types:
+
+Mouse Events
+click – Triggered when the user clicks on an element.
+dblclick – Triggered when the user double-clicks on an element.
+mousedown – Triggered when the mouse button is pressed down.
+mouseup – Triggered when the mouse button is released.
+mousemove – Triggered when the mouse pointer moves.
+mouseover – Triggered when the mouse pointer moves over an element.
+mouseout – Triggered when the mouse pointer leaves an element.
+mouseenter – Triggered when the pointer enters an element (does not bubble).
+mouseleave – Triggered when the pointer leaves an element (does not bubble).
+contextmenu – Triggered when the right mouse button is clicked.
+
+------------------------------------------------------------------------------------------------------------------------------
+Keyboard Events
+keydown – Triggered when a key is pressed.
+keyup – Triggered when a key is released.
+keypress – (Deprecated) Triggered when a key is pressed (character keys only).
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Form Events
+submit – Triggered when a form is submitted.
+reset – Triggered when a form is reset.
+change – Triggered when the value of an input changes.
+input – Triggered when the user inputs data into a field.
+focus – Triggered when an element gains focus.
+blur – Triggered when an element loses focus.
+focusin – Similar to focus, but bubbles.
+focusout – Similar to blur, but bubbles.
+select – Triggered when the user selects some text.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Drag and Drop Events
+drag – Triggered while an element is being dragged.
+dragstart – Triggered when the dragging starts.
+dragend – Triggered when dragging ends.
+dragover – Triggered when an element is dragged over a valid drop target.
+dragenter – Triggered when a dragged element enters a drop target.
+dragleave – Triggered when a dragged element leaves a drop target.
+drop – Triggered when an element is dropped on a valid drop target.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Clipboard Events
+copy – Triggered when the user copies content.
+cut – Triggered when the user cuts content.
+paste – Triggered when the user pastes content.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Media Events
+play – Triggered when playback starts.
+pause – Triggered when playback is paused.
+ended – Triggered when playback ends.
+timeupdate – Triggered when the playback position changes.
+volumechange – Triggered when the volume is changed.
+seeking – Triggered when seeking starts.
+seeked – Triggered when seeking ends.
+loadedmetadata – Triggered when metadata (e.g., duration) is loaded.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Touch Events
+touchstart – Triggered when a touch starts.
+touchmove – Triggered when a touch moves.
+touchend – Triggered when a touch ends.
+touchcancel – Triggered when a touch is canceled.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Pointer Events
+pointerdown – Triggered when a pointer is pressed.
+pointerup – Triggered when a pointer is released.
+pointermove – Triggered when a pointer moves.
+pointerover – Triggered when a pointer hovers over an element.
+pointerout – Triggered when a pointer leaves an element.
+pointerenter – Triggered when a pointer enters an element (non-bubbling).
+pointerleave – Triggered when a pointer leaves an element (non-bubbling).
+gotpointercapture – Triggered when an element captures a pointer.
+lostpointercapture – Triggered when an element loses pointer capture.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Focus and Blur Events
+blur
+focus
+focusin
+focusout
+
+------------------------------------------------------------------------------------------------------------------------------
+
+UI Events
+resize – Triggered when the window is resized.
+scroll – Triggered when an element is scrolled.
+error – Triggered when an error occurs.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Network Events
+online – Triggered when the browser goes online.
+offline – Triggered when the browser goes offline.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Progress Events
+load – Triggered when a resource (like an image) is fully loaded.
+error – Triggered when there’s an error loading a resource.
+abort – Triggered when a resource loading is aborted.
+progress – Triggered during the loading of a resource.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Animation Events
+animationstart – Triggered when an animation starts.
+animationend – Triggered when an animation ends.
+animationiteration – Triggered when an animation iteration occurs.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Transition Events
+transitionstart – Triggered when a CSS transition starts.
+transitionend – Triggered when a CSS transition ends.
+transitioncancel – Triggered when a CSS transition is canceled.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Miscellaneous Events
+wheel – Triggered when the mouse wheel is scrolled.
+beforeunload – Triggered before the user leaves a page.
+hashchange – Triggered when the URL hash changes.
+popstate – Triggered when the browser’s history changes.
+storage – Triggered when local storage changes.
+DOMContentLoaded – Triggered when the initial HTML is fully loaded and parsed.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+Custom Events
+
+CustomEvent – Allows for user-defined events using the CustomEvent constructor.
+Note
+These are the standard events supported by modern browsers. Some events may have slightly different behavior or availability depending on the browser.
+
+
+
+
+
+
+
+
+
+
+
+
+
