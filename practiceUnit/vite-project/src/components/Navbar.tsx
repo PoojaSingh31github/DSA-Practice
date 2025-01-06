@@ -13,6 +13,12 @@ const Navbar: React.FC = ()=>{
                 <li>
                     <Link to={"/"}>Home</Link>
                 </li>
+                <li>
+                    <Link to={"/quiz"}>quiz</Link>
+                </li>
+                <li>
+                    <Link to={"/images"}>images</Link>
+                </li>
                 {/* Dynamically pass the product ID in the route */}
                 <li>
                     <Link to={"/products/5"}>single Product</Link>
