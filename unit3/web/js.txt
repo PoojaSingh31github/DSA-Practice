@@ -1,7 +1,4 @@
-notion notes:-
-https://dandy-reaper-2ef.notion.site/Drive-Resources-155e53225f02801da8fcc408280da22d
-
-    
+  
     level 4
 1. Store by value VS Store by reference
 2. 3 type of function
