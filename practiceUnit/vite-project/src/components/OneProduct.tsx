@@ -31,11 +31,12 @@ const OneProduct: React.FC<Props> = (props) => {
         <div>
             {
                 product ? (<>
-                    <h1>{product.title}</h1>
-                </>) :
-                    (<h1>
-                        no porduct found
-                    </h1>)
+                            <h1>{product.title}</h1>
+                        </>) :
+                        
+                        (<h1>
+                            no porduct found
+                        </h1>)
 
             }
         </div>

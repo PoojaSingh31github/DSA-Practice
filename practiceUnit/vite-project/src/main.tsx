@@ -3,13 +3,13 @@ import './index.css'
 import App from './App.tsx'
 import { AuthProvider } from './context/Auth.tsx'
 import { Provider } from 'react-redux'
-import store from './redux/store.ts'
+import store from './redux/store2.ts'
 
 createRoot(document.getElementById('root')!).render(
     <AuthProvider>
         <Provider store={store}
         >
-    <App />
-    </Provider>
+            <App />
+        </Provider>
     </AuthProvider>
 )
