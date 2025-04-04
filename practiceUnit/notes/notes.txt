@@ -1,3 +1,19 @@
+projects-
+bankDash :- https://bankdash-henna.vercel.app/
+pocket :- https://pocket-mu-one.vercel.app/
+leadgen page :- https://lead-gen-ai-beta.vercel.app/
+ai exchange page :- https://ai-exchange-page.vercel.app/
+event page :- https://event-page-ochre-pi.vercel.app/
+accelaator page :- https://accelerator-page.vercel.app/
+ai page :- https://ai-page-ten.vercel.app/
+
+
+
+
+
+
+
+
 nodejs:-
 ~~~~~~~~~~~~
 
