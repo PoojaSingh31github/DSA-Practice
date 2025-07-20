@@ -58,3 +58,64 @@ console.log('----------------------------')
 let newfun = printDetails.bind(user1, "Delhi", "India");
 newfun();
 
+
+// function a(){
+// for (var i=0; i<5; i++){
+//     ((count)=>{
+//         setTimeout(()=>{
+//         console.log(count+1)
+//         },count*1000)
+//     })(i)
+// }
+
+// clourse
+function parent(){
+    let count =10
+    return (ahak, sksksl)=>{
+      return  ` ${ahak} ${count * 2}`
+    }
+}
+
+console.log(parent()("heyyyyyyy"))
+
+function  a(a){
+    return function(b){
+        return function(c){
+            return a + b + c
+        }
+    }
+}
+console.log(a(10)(20)(300))
+
+const person={
+     gett : function(greet, question){
+       return `${this.name} ${this.last} ${greet} ${question}`
+    }
+}
+
+const pooja ={
+    name:"pooja",
+    last : "singh"
+    
+}
+
+const neww= person.gett.call(pooja, "heyy" , "how are you ")
+console.log(neww)
+
+
+
+
+
+
+// var global variable 
+// console ni hone deta pr for loop chl chuka hota h 
+
+// let k s=ace me tavi chlta h jb internal block ka work finish hpo ajye tb formlopp chlta h idr... it craete clouse
+
+
+// idr count variable ni le skati ?? 
+// setintreval ? 
+// no ideaa
+// sare 6 honge  5 timeeeeeee 
+
+
