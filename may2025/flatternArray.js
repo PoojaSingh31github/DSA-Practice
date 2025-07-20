@@ -31,12 +31,36 @@ function stackFalter(arr){
 console.log(stackFalter(arr))
 
 
+const array =[45, 44, 32, 10, 23, 12];
 
+let max = 0
+let max2 =0
 
+const a = array.forEach((ele, idex)=>{
+    if(ele > max){
+        max2 = max
+        max = ele
+    }else if(ele < max && ele > max2){
+        max2 = ele
+    }
+})
 
+// const b = array.forEach((ele,idnex)=>{
+//     if(ele < max && ele > max2){
+//         max2 = ele
+//     }
+// })
+console.log(max, max2)
 
+const array =    [45, 44, 32, 10,];
+        //     i  0 1 2 3 4 5 6 7
+        //  count 0 1 2 2 3 4 4 5
 
-
-
-
-
+// let count = 0
+// for(let i=0; i<array.length; i++){
+//     if (array[i]!==0){
+//         [[array[i], array[count]]=[array[count], array[i]]]
+//         count ++
+//     }
+// }
+// console.log(array)
