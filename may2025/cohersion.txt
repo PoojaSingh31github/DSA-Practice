@@ -1,0 +1,161 @@
+[] + [] → "" (empty string)
+
+[] + {} → "[object Object]"
+
+{} + [] → 0 (block + array)
+
+1 + '1' → "11"
+
+1 - '1' → 0
+
+'5' * '2' → 10
+
+'10' - true → 9
+
+'10' + true → "10true"
+
+null + 1 → 1
+
+undefined + 1 → NaN
+
+[] == false → true
+
+[] == [] → false (ref compare)
+
+[1,2] == '1,2' → true (toString)
+
+{ } == { } → false
+
+'' == 0 → true
+
+!!'false' == !!'true' → true
+
+false == '0' → true
+
+null == undefined → true
+
+null === undefined → false
+
+'' == false → true
+
+true + false → 1
+
+'1' + 1 + 9 → "119"
+
+{} + 1 → 1 or NaN (context)
+
+'123' + 123 → "123123"
+
+true + true → 2
+
+typeof 42 → "number"
+
+[] === false → false
+
+undefined + 1 → NaN
+
+1 + true + 1 → 3
+
+"5" + 2 + 3 → "523"
+
++true → 1
+
+Boolean([]) → true
+
+Boolean("false") → true
+
+'b' + 'a' + + 'a' + 'a' → "baNaNa" 🍌
+
+'4' * 2 → 8
+
+typeof null → "object"
+
+false == 0 → true
+
+'' == 0 → true
+
+0 === false → false
+
+0 == false → true
+
+📌 Important Topics You Might’ve Missed in Coercion:
+Topic	Why It’s Important
+Falsy/Truthy Values	false, 0, '', null, undefined, NaN are falsy — rest are truthy.
+  
+Unary + operator	Converts non-numbers to number. Ex: +'42' → 42, +[] → 0
+
+isNaN() vs Number.isNaN()	isNaN('hello') is true, but Number.isNaN('hello') is false
+
+Loose (==) vs Strict (===) Equality	Know which one does coercion (==)
+  
+Object to primitive coercion	Using valueOf() and toString() — objects become strings/numbers when forced
+  
+[] == ![] → true	Mind-bending logic due to coercion
+
+Template Literals & Coercion	${null}, ${undefined}, ${true} etc
+
+Custom .toString() / .valueOf() methods	Useful when coercing class instances
+
+💥 Bonus Interview-Level Questions (Add to Test):
+What is the result of typeof NaN? → "number"
+
+Why does typeof null === 'object' return true? → Legacy bug in JS
+
+What is 0 + '0' - 0? → 0
+
+Why does '5' + + '5' return "55"? → Unary + converts '5' to 5
+
+What is false + true + "1"? → "11"
+
+1 < 2 < 3 vs 3 > 2 > 1 — explain difference? → Due to coercion: left returns true, right returns false
+
+'true' == true → false (no numeric coercion here)
+
+true == '1' → true (both coerce to 1)
+
+[] + 1 → '1' (array becomes empty string, then string concat)
+
+[null] + 1 → 'null1'
+
+
+console.log([null] == false); = true
+console.log([undefined] == false) =true
+console.log(false == 'false') = false
+console.log("5" == 5) = true
+console.log(parseInt('08')) = 8
+console.log(' \t\r\n ' == 0) true
+console.log(null == 0)  flse
+console.log(Number([]))  0
+console.log([] == ![]) true
+console.log([1] + 1); 11
+console.log([] + 1); 1
+console.log([] + {}); [[object Object]]
+console.log([] == []); false
+console.log([]==={})
+console.log([] + []); ""
+console.log([] + {});[object Object]
+console.log({} + []);[object Object]
+console.log(null === undefined); false
+console.log(null == undefined); true
+
+
+
+[] == ![]..... Why is this true?
+
+🔍 Step-by-step Breakdown:
+🧩 Step 1: Evaluate ![]
+[] is truthy....So ![] is false 
+[] == false
+🧩 Step 2: Now evaluate [] == false
+Here comes type coercion with == (loose equality):
+One is an object ([]), One is a boolean (false)
+So JS converts both to primitives before comparing.
+🧪 Coercion Rules in Action:
+Step 2.1: Convert false to Number , false → 0
+Step 2.2: Convert [] to primitive , [].toString() → "" (empty string)
+"" → when coerced to Number → 0
+
+So now you’re comparing: 0 == 0 
+✅ Final Result: [] == ![]  →  [] == false  →  0 == 0  →  true
+
+
