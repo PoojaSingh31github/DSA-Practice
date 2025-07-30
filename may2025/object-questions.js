@@ -141,6 +141,33 @@ const ans = arr.reduce((acc, curr)=>{
 console.log(ans)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
+const obj1 = { a: 1, b: { c: 2 } };
+const obj2 = { a: 1, b: { c: 2 } };
+function checkEqual(obj1, obj2) {
+  // If both are not objects, compare directly (base case)
+  if (typeof obj1 !== "object" || obj1 === null || typeof obj2 !== "object" || obj2 === null) {
+    return obj1 === obj2;
+  }
+
+  // If number of keys don't match
+  const keys1 = Object.keys(obj1);
+  const keys2 = Object.keys(obj2);
+
+  if (keys1.length !== keys2.length) return false;
+
+  // Loop through all keys in obj1
+  for (let key of keys1) {
+    // If key not found in obj2
+    if (!(key in obj2)) return false;
+
+    // Recursive check for each key-value pair
+    if (!checkEqual(obj1[key], obj2[key])) return false;
+  }
+
+  return true;
+}
+console.log(checkEqual(obj1, obj2))
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -33,6 +33,22 @@ function recusion(navTree, res=[]){
 console.log(recusion(navTree))
 
 
+const recur=(tree, res=[])=>{
+    if (tree.label){
+        res.push(tree.label)
+    } 
+    if (tree.children){
+        for (let key of tree.children){
+            recur(key, res)
+        }
+    }
+    return res
+}
+
+console.log(recur(navTree))
+
+
+
 const items = [
   { name: "Apple", category: "Fruit" },
   { name: "Broccoli", category: "Vegetable" },

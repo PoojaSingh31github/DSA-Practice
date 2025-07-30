@@ -64,3 +64,25 @@ const array =    [45, 44, 32, 10,];
 //     }
 // }
 // console.log(array)
+
+
+const words = ["Hello", "I", "am", "learning", "JavaScript"];
+
+const ans = words.reduce((acc,curr)=>{
+    acc+=curr+" "
+    return acc
+}, "")
+
+console.log(ans)
+
+const arr = ["apple", "banana", "grapes", "kiwi", "pineapple","pineapple","pineapple","pineapple","pineapple", "cat"];
+let count = 0;
+arr.map(ele=>{
+    if (ele.split("").length > 5 ){
+        count +=1
+        
+    } 
+    
+})
+
+console.log(count)
