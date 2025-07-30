@@ -169,7 +169,62 @@ function checkEqual(obj1, obj2) {
 console.log(checkEqual(obj1, obj2))
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Given an array consisting of only 0s, 1s, and 2s. Write a program to in-place sort the array without using inbuilt sort functions. ( Expected: Single pass-O(N) and constant space)
+input= [2,0,2,1,1,0]
+// Output: [0,0,1,1,2,2]
+
+let count =input.length-1;
+for (let i=input.length-1; i>=0; i--){
+    if (input[i] != 1 ){
+        [[input[count],input[i]]=[input[i], input[count]]]
+        count-=1
+    }
+} 
+count = input.length-1;
+for (let i=input.length-1; i>=0; i--){
+    if (input[i] != 0 ){
+        [[input[count],input[i]]=[input[i], input[count]]]
+        count-=1
+    }
+} 
+
+console.log(input)
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Given an array containing both positive and negative integers, we have to find the length of the longest subarray with the sum of all elements equal to zero.
+
+// nput Format: N = 6,
+array = [9, -3, 3, -1, 6, -5]
+let maximum = 0;
+
+for (let i=0; i<array.length; i++){
+    let a =0;
+    let count =0
+    let maxx;
+    for (let j =i; j<array.length; j++){
+        // console.log(array[j])
+        a+=array[j]
+        count+=1
+        if (a==0){
+            maxx = count
+        }
+        if (maximum < maxx){
+            maximum = maxx
+        }
+    }
+    console.log(a, count, maxx, "maxxxxxxxxxxxxxxxxx", maximum)
+}
+console.log(maximum)
+
+// console.log(-3+ 3+ -1+ 6+-5)
+
+
+// Result: 5
+// Explanation: The following subarrays sum to zero:
+// {-3, 3} , {-1, 6, -5}, {-3, 3, -1, 6, -5}
+// Since we require the length of the longest subarray, our answer is 5!
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
