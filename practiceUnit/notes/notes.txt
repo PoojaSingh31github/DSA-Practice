@@ -7,9 +7,10 @@ event page :- https://event-page-ochre-pi.vercel.app/
 accelaator page :- https://accelerator-page.vercel.app/
 ai page :- https://ai-page-ten.vercel.app/
 
+https://adarsha-khatua.notion.site/Creware-21f036445adc803ebe13ec8393f02532
 
-
-
+nagarroo chatgpt :-
+https://chatgpt.com/share/68ada9f8-f060-8003-a3ea-c007516b80cf
 
 DSA:-
 ~~~~~~~~~~~~
