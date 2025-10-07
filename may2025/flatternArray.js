@@ -86,3 +86,27 @@ arr.map(ele=>{
 })
 
 console.log(count)
+
+
+
+const input = [1, [2, 3], [4, [5, 6]], 7]
+// Output: [1, 2, 3, 4, 5, 6, 7]
+function rec(arr, res=[]){
+    for (let i of arr){
+        
+    if (Array.isArray(i)){
+        rec(i, res)
+    }else{
+        res.push(i)
+    }
+    }
+    return res
+}
+
+console.log(rec(input))
+
+const flat = arr => arr.reduce((acc, curr)=>
+   acc.concat(Array.isArray(curr) ? flat(curr) : curr) ,[]
+)
+
+console.log(flat(input))

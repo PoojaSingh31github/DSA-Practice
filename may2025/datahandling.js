@@ -32,6 +32,10 @@ function recusion(navTree, res=[]){
 }
 console.log(recusion(navTree))
 
+const flat = (node) => [node.label, ...(node.children ? node.children.flatMap(flat) : [])];
+
+console.log(flat(navTree));
+
 
 const recur=(tree, res=[])=>{
     if (tree.label){
@@ -73,6 +77,43 @@ let res = items.reduce((acc,{name, category},index)=>{
 },{})
 
 console.log(res)
+
+
+
+const items = [
+  { name: "Apple", category: "Fruit" },
+  { name: "Broccoli", category: "Vegetable" },
+  { name: "Banana", category: "Fruit" },
+  { name: "Carrot", category: "Vegetable" },
+];
+
+
+// [
+//     {Friuts : [apple , banana],
+//     vegetable: [broccoli, carrot]
+//     }
+// ]
+
+const ans = items.reduce((acc, {name, category})=>
+    // acc[category] ? acc[category].push(name) : acc[category] = []
+     (acc[category] ||= []).push(name)
+//      {(acc[category] ||= []).push(name)
+//   return acc}
+    // {if (!acc[category]) acc[category] = []
+    // acc[category].push(name)
+    // return acc}
+, {})
+const ans = items.reduce((acc, { name, category }) => 
+    ((acc[category] ||= []).push(name), acc),
+  {}
+);
+
+console.log(ans);
+// { Fruit: [ 'Apple', 'Banana' ], Vegetable: [ 'Broccoli', 'Carrot' ] }
+
+
+console.log(ans)
+
 
 
 
