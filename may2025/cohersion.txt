@@ -63,6 +63,7 @@ undefined + 1 → NaN
 Boolean([]) → true
 
 Boolean("false") → true
+Boolean(false) → true
 
 'b' + 'a' + + 'a' + 'a' → "baNaNa" 🍌
 
@@ -80,6 +81,7 @@ false == 0 → true
 
 📌 Important Topics You Might’ve Missed in Coercion:
 Topic	Why It’s Important
+
 Falsy/Truthy Values	false, 0, '', null, undefined, NaN are falsy — rest are truthy.
   
 Unary + operator	Converts non-numbers to number. Ex: +'42' → 42, +[] → 0
@@ -159,3 +161,938 @@ So now you’re comparing: 0 == 0
 ✅ Final Result: [] == ![]  →  [] == false  →  0 == 0  →  true
 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+JavaScript Medium & Hard Output-Based Interview Questions
+========================================================
+100 Essential Questions for Technical Interviews
+
+This comprehensive collection contains 100 carefully selected JavaScript output-based 
+interview questions ranging from medium to hard difficulty.
+
+HOISTING & VARIABLE DECLARATIONS
+===============================
+
+1. What's the output?
+console.log(x);
+var x = 5;
+console.log(x);
+
+2. What's the output?
+function sayHi() {
+  console.log(name);
+  console.log(age);
+  var name = 'Lydia';
+  let age = 21;
+}
+sayHi();
+
+3. What's the output?
+var x = 1;
+function foo() {
+  x = 10;
+  return;
+  function x() {}
+}
+foo();
+console.log(x);
+
+4. What's the output?
+console.log(printName());
+function printName(){
+    return "Hi my name is Bob"
+}
+
+5. What's the output?
+console.log(printName());
+const printName = () => {
+    return "Hi my name is Bob"
+}
+
+CLOSURES & SCOPE
+===============
+
+6. What's the output?
+for (var i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1);
+}
+
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1);
+}
+
+7. What's the output?
+function outer() {
+  var x = 20;
+  function inner() {
+    console.log(x);
+    var x = 30;
+  }
+  inner();
+}
+outer();
+
+8. What's the output?
+let a = 10;
+if(true){
+   let a = 20;
+   console.log(a, "inside");
+}
+console.log(a, "outside");
+
+THIS BINDING & ARROW FUNCTIONS
+==============================
+
+9. What's the output?
+const shape = {
+  radius: 10,
+  diameter() {
+    return this.radius * 2;
+  },
+  perimeter: () => 2 * Math.PI * this.radius,
+};
+
+console.log(shape.diameter());
+console.log(shape.perimeter());
+
+10. What's the output?
+const person = { name: 'Lydia' };
+
+function sayHi(age) {
+  return ${this.name} is ${age};
+}
+
+console.log(sayHi.call(person, 21));
+console.log(sayHi.bind(person, 21));
+
+11. What's the output?
+var person = {
+  name: 'John',
+  greet: function() {
+    console.log('Hello, ' + this.name);
+  }
+};
+var greetFunc = person.greet; -> this line cannot work, it needs to bind with the bind function (as a standalone function)
+var greetFunc = person.greet.bind(person);
+greetFunc();
+
+OBJECTS & REFERENCES
+===================
+
+12. What's the output?
+let c = { greeting: 'Hey!' };
+let d;
+d = c;
+c.greeting = 'Hello';
+console.log(d.greeting);
+
+13. What's the output?
+const a = {};
+const b = { key: 'b' };
+const c = { key: 'c' };
+a[b] = 123;
+a[c] = 456;
+console.log(a[b]);
+
+14. What's the output?
+const obj = { a: 'one', b: 'two', a: 'three' };
+console.log(obj);
+
+15. What's the output?
+function checkAge(data) {
+  if (data === { age: 18 }) {
+    console.log('You are an adult!');
+  } else if (data == { age: 18 }) {
+    console.log('You are still an adult.');
+  } else {
+    console.log(Hmm.. You don't have an age I guess);
+  }
+}
+checkAge({ age: 18 });
+
+TYPE COERCION & COMPARISONS
+==========================
+
+16. What's the output?
+console.log(3 + 4 + '5');
+
+17. What's the output?
+console.log('10'+20+30);
+console.log('10'+'20'+30);
+console.log(10+20+'30');
+
+18. What's the output?
+console.log(3 > 2 > 1);   true>1 -----> 1>1 ----- false ans 
+console.log(3 > 2 > 0);   true answer 
+
+19. What's the output?
+console.log([] + []);
+
+20. What's the output?
+let a = 3;
+let b = new Number(3);
+let c = 3;
+
+console.log(a == b);
+console.log(a === b);
+console.log(b === c);
+
+21. What's the output?
+console.log(+true);
+console.log(!'Lydia');
+console.log(++true); -------------> error 
+
+22. What's the output?
+console.log(typeof typeof 1);
+
+ARRAYS & ARRAY METHODS
+=====================
+
+23. What's the output?
+const numbers = [1, 2, 3];
+numbers[10] = 11;
+console.log(numbers);
+
+24. What's the output?
+var array = ["1","2","3","4","5"];
+delete array[3];
+console.log(array.length);
+
+25. What's the output?
+[1, 2, 3].map(num => {
+  if (typeof num === 'number') return;
+  return num * 2;
+});
+
+26. What's the output?
+const arr1 = [1,2,3];
+const arr2 = [1,2,3];
+const str = "1,2,3";
+
+console.log(arr1 == str);
+console.log(arr1 == arr2);
+
+27. What's the output?
+console.log([11, 2, 31] + [4, 5, 6]);
+
+EVENT LOOP & ASYNCHRONOUS PROGRAMMING
+====================================
+
+28. What's the output?
+const foo = () => console.log('First');
+const bar = () => setTimeout(() => console.log('Second'));
+const baz = () => console.log('Third');
+
+bar();
+foo();
+baz();
+
+29. What's the output?
+console.log('Start');
+
+setTimeout(function() {
+  console.log('Timeout');
+}, 0);
+
+Promise.resolve().then(function() {
+  console.log('Promise');
+});
+
+console.log('End');
+
+30. What's the output?
+function hello() {
+  console.log("1");
+    setTimeout(() => {
+        console.log("2");
+    })
+  console.log("3");
+}
+hello();
+
+PROMISES & ASYNC/AWAIT
+=====================
+
+31. What's the output?
+const firstPromise = new Promise((res, rej) => {
+  setTimeout(res, 500, 'one');
+});
+
+const secondPromise = new Promise((res, rej) => {
+  setTimeout(res, 100, 'two');
+});
+
+Promise.race([firstPromise, secondPromise]).then(res => console.log(res));
+
+32. What's the output?
+async function getData() {
+  return await Promise.resolve('I made it!');
+}
+
+const data = getData();
+console.log(data);
+
+33. What's the output?
+Promise.resolve(1)
+  .then(() => 2)
+  .then(() => 3)
+  .then(console.log);
+
+FUNCTIONS & ADVANCED CONCEPTS
+============================
+
+34. What's the output?
+function sum(a, b) {
+  return a + b;
+}
+sum(1, '2');
+
+35. What's the output?
+function sayHi() {
+  return (() => 0)();
+}
+console.log(typeof sayHi());
+
+36. What's the output?
+function getAge(...args) {
+  console.log(typeof args);
+}
+getAge(21);
+
+37. What's the output?
+function* generator(i) {
+  yield i;
+  yield i * 2;
+}
+
+const gen = generator(10);
+
+console.log(gen.next().value);
+console.log(gen.next().value);
+
+PROTOTYPES & CLASSES
+===================
+
+38. What's the output?
+class Chameleon {
+  static colorChange(newColor) {
+    this.newColor = newColor;
+    return this.newColor;
+  }
+
+  constructor({ newColor = 'green' } = {}) {
+    this.newColor = newColor;
+  }
+}
+
+const freddie = new Chameleon({ newColor: 'purple' });
+console.log(freddie.colorChange('orange'));
+
+39. What's the output?
+function Person(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+
+const member = new Person('Lydia', 'Hallie');
+Person.getFullName = function() {
+  return ${this.firstName} ${this.lastName};
+};
+
+console.log(member.getFullName());
+
+SPREAD OPERATOR & DESTRUCTURING
+==============================
+
+40. What's the output?
+const person1 = { name: 'xyz', age: 21 };
+const person2 = { city: 'abc', ...person1 };
+console.log(person2);
+
+41. What's the output?
+const user = {
+name: "Surbhi dighe",
+country: "India"
+};
+const { name: fullname, country } = user;
+console.log(fullname);
+console.log(name);
+
+42. What's the output?
+[...'Lydia'];
+
+ERROR HANDLING & TRY-CATCH
+==========================
+
+43. What's the output?
+(() => {
+  let x, y;
+  try {
+    throw new Error();
+  } catch (x) {
+    (x = 1), (y = 2);
+    console.log(x);
+  }
+  console.log(x);
+  console.log(y);
+})();
+
+ADVANCED TYPE CHECKING
+=====================
+
+44. What's the output?
+const obj = { 1: 'a', 2: 'b', 3: 'c' };
+const set = new Set([1, 2, 3, 4, 5]);
+
+obj.hasOwnProperty('1');
+obj.hasOwnProperty(1);
+set.has('1');
+set.has(1);
+
+45. What's the output?
+console.log(0 == false);
+console.log(1 == true);
+
+COMPLEX LOGIC & LOOPS
+====================
+
+46. What's the output?
+for (let i = 1; i < 5; i++) {
+  if (i === 3) continue;
+  console.log(i);
+}
+
+47. What's the output?
+let number = 0;
+console.log(number++);
+console.log(++number);
+console.log(number);
+
+STRING METHODS & TEMPLATE LITERALS
+=================================
+
+48. What's the output?
+function getPersonInfo(one, two, three) {
+  console.log(one);
+  console.log(two);
+  console.log(three);
+}
+
+const person = 'Lydia';
+const age = 21;
+
+getPersonInfo`${person} is ${age} years old`;
+
+49. What's the output?
+console.log('apple'.split(''));
+
+REGULAR EXPRESSIONS & PARSING
+============================
+
+50. What's the output?
+const num = parseInt('7*6', 10);
+
+ADVANCED OBJECT MANIPULATION
+===========================
+
+51. What's the output?
+let person = { name: 'Lydia' };
+const members = [person];
+person = null;
+
+console.log(members);
+
+52. What's the output?
+function getInfo(member, year) {
+  member.name = 'Lydia';
+  year = '1998';
+}
+
+const person = { name: 'Sarah' };
+const birthYear = '1997';
+
+getInfo(person, birthYear);
+
+console.log(person, birthYear);
+
+REDUCE & ARRAY OPERATIONS
+========================
+
+53. What's the output?
+[[0, 1], [2, 3]].reduce(
+  (acc, cur) => {
+    return acc.concat(cur);
+  },
+  [1, 2],
+);
+
+BOOLEAN LOGIC & FALSY VALUES
+===========================
+
+54. What's the output?
+!!null;
+!!'';
+!!1;
+
+55. Which of these values are falsy?
+0;
+new Number(0);
+('');
+(' ');
+new Boolean(false);
+undefined;
+
+VARIABLE REDECLARATION
+=====================
+
+56. What's the output?
+var num = 8;
+var num = 10;
+console.log(num);
+
+57. What's the output?
+var a = 10;
+let a = 20;
+console.log(a)
+
+OBJECT PROPERTY ACCESS
+=====================
+
+58. What's the output?
+const bird = {
+  size: 'small',
+};
+
+const mouse = {
+  name: 'Mickey',
+  small: true,
+};
+
+mouse[bird.size];
+mouse[bird["size"]];
+mouse.bird.size;
+
+JSON & OBJECT METHODS
+====================
+
+59. What's the output?
+let x = '{ "b": 1, "c": 2 }';
+let y = JSON.parse(x);
+console.log(typeof y);
+
+60. What's the output?
+let x = { b: 1, c: 2 };
+let y = Object.keys(x);
+console.log(y.length);
+
+SWITCH STATEMENTS
+================
+
+61. What's the output?
+let text;
+switch (1) {
+  case 0:
+    text = "This is zero";
+    break;
+  case 1:
+    text = "This is one";
+  case 2:
+    text = "This is two";
+    break;
+  default:
+    text = "No matches found!";
+}
+console.log(text);
+
+ADVANCED ARRAY FILTERING
+=======================
+
+62. What's the output?
+const arr = [11, 0, '', false, 2, 1];
+const filtered = arr.filter(Boolean);
+console.log(filtered);
+
+63. What's the output?
+const arr = [10, -1, 2];
+arr.sort((a, b) => a - b);
+console.log(arr);
+
+DEEP VS SHALLOW COPY
+===================
+
+64. What's the output?
+let a={ x:1, y: {alpha:10,beta:20} };
+let b = {...a};
+b.x=101;
+b.y.alpha=1001;
+console.log(a.x);
+console.log(a.y.alpha);
+
+65. What's the output?
+const userDetails = {
+  firstName: "Surbhi",
+  lastName: "Dighe",
+  age: 20,
+  address: {
+    city: "Hyderabad",
+    country: "India",
+  },
+};
+
+let cloneUserDetails = { ...userDetails };
+userDetails.age = 22;
+userDetails.address.city = "Banglore";
+
+console.log(cloneUserDetails.age);
+console.log(cloneUserDetails.address.city);
+
+GLOBAL OBJECTS & WINDOW
+=======================
+
+66. What's the output?
+let greeting;
+greetign = {}; // Typo!
+console.log(greetign);
+
+67. What's the output?
+function bark() {
+  console.log('Woof!');
+}
+
+bark.animal = 'dog';
+// What happens?
+
+ADVANCED STRING OPERATIONS
+==========================
+
+68. What's the output?
+String.prototype.giveLydiaPizza = () => {
+  return 'Just give Lydia pizza already!';
+};
+
+const name = 'Lydia';
+
+console.log(name.giveLydiaPizza())
+
+COMPLEX ASYNC PATTERNS
+======================
+
+69. What's the output?
+queueMicrotask(() => console.log('microtask'));
+setTimeout(() => console.log('timeout'), 0);
+Promise.resolve().then(() => console.log('promise'));
+console.log('sync');
+
+ADVANCED FUNCTION FEATURES
+==========================
+
+70. What's the output?
+function sum(a=5, b=7){
+    return a+b;
+}
+console.log(sum(undefined, 20));
+
+71. What's the output?
+const sum = eval('10*10+5');
+
+PROTOTYPE CHAIN
+==============
+
+72. What's the output?
+function Person(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+
+const lydia = new Person('Lydia', 'Hallie');
+const sarah = Person('Sarah', 'Smith');
+
+console.log(lydia);
+console.log(sarah);
+
+FOR-IN LOOPS
+===========
+
+73. What's the output?
+const person = {
+  name: 'Lydia',
+  age: 21,
+};
+
+for (const item in person) {
+  console.log(item);
+}
+
+COMPLEX COMPARISONS
+==================
+
+74. What's the output?
+console.log(5 < 6 < 7);
+
+75. What's the output?
+console.log(7 > 6 > 5);
+
+ARRAY INDEX OPERATIONS
+======================
+
+76. What's the output?
+const arr = [2,3,5,2,8,10,5];
+console.log(arr.indexOf(5))
+
+77. What's the output?
+const array = [8, 18, 28, 38];
+const result = array.map(element => element + 2)
+               .filter((element) => element > 25);
+console.log(result);
+
+VARIABLE SCOPE EDGE CASES
+========================
+
+78. What's the output?
+let x = ["a","b","c"];
+let y = ["a","b","c"];
+let z = y;
+console.log(x == y);
+console.log(z == y);
+console.log(z == x);
+
+79. What's the output?
+let x;
+console.log(x);
+x = 20;
+console.log(x);
+x = "John";
+console.log(x);
+
+FUNCTION PARAMETER HANDLING
+==========================
+
+80. What's the output?
+function modify(obj) {
+    obj.name = "Updated";
+}
+
+let person = { name: "Original" };
+modify(person);
+console.log(person.name);
+
+function reassign(obj) {
+    obj = { name: "New Object" };
+}
+
+reassign(person);
+console.log(person.name);
+
+COMPLEX OBJECT OPERATIONS
+========================
+
+81. What's the output?
+const a = {x : 1};
+const b = {x : 1};
+console.log(a === b);
+console.log(a.x === b.x)
+
+82. What's the output?
+const arr = ["A","B","C","D","E"]
+console.log(Object.keys(arr));
+
+DESTRUCTURING WITH DEFAULTS
+===========================
+
+83. What's the output?
+const person = {
+  firstName: 'Surbhi',
+};
+const { lastName="dighe" } = person;
+console.log(lastName);
+
+84. What's the output?
+const person = {
+  firstName: 'Surbhi',
+};
+const { firstName="Henry"} = person;
+console.log(firstName);
+
+VARIABLE TRUTHINESS
+==================
+
+85. What's the output?
+var x = 0;
+var y = 10;
+if(x){
+  console.log(x);
+}
+if(y){
+  console.log(y);
+}
+
+OBJECT DESTRUCTURING
+===================
+
+86. What's the output?
+const obj = {
+var1: 1,
+var2: 2
+};
+const { var1, var2 } = obj;
+console.log(var1, var2);
+
+ARRAY TYPE CHECKING
+==================
+
+87. What's the output?
+function checkValue(value){
+    var result = Array.isArray(value);
+    console.log(result);
+}
+checkValue([1,2,3]);
+
+MATHEMATICAL OPERATIONS
+======================
+
+88. What's the output?
+console.log(10 - "5");
+console.log("5" - 10);
+
+89. What's the output?
+console.log(10 + "5");
+console.log("5" + 10);
+
+ADVANCED VARIABLE ASSIGNMENT
+============================
+
+90. What's the output?
+var z = 1,
+y = z = typeof y;
+console.log(y);
+
+91. What's the output?
+let f = "8";
+let a = 1;
+console.log((+f)+a+1);
+
+POST/PRE INCREMENT
+=================
+
+92. What's the output?
+let x = 5;
+let y = x++;
+console.log(y);
+console.log(x)
+
+93. What's the output?
+let x = 5;
+let y = ++x;
+console.log(y);
+console.log(x)
+
+DELETE OPERATOR
+==============
+
+94. What's the output?
+var Employee = {
+company: 'Acme'
+}
+
+var employee1 = Object.create(Employee);
+delete employee1.company
+console.log(employee1.company);
+
+delete Employee.company
+console.log(employee1.company);
+
+FUNCTION RETURN STATEMENTS
+=========================
+
+95. What's the output?
+function f1()
+{
+return {
+name: "Sandeep"
+};
+}
+
+function f2()
+{
+return
+
+{
+name: "Sandeep"
+};
+}
+
+console.log(f1());
+console.log(f2());
+
+ADVANCED ARRAY OPERATIONS
+========================
+
+96. What's the output?
+const arr = [1, 2, 3, 4, 5, -6, 7];
+arr.length = 0;
+console.log(arr);
+
+COMPLEX ASYNC WITH MULTIPLE APIS
+===============================
+
+97. What's the output order?
+console.log('1');
+
+queueMicrotask(() => console.log('2'));
+
+setTimeout(() => console.log('3'), 0);
+
+new Promise(resolve => {
+  console.log('4');
+  resolve();
+}).then(() => console.log('5'));
+
+console.log('6');
+
+ADDITIONAL CHALLENGING QUESTIONS
+===============================
+
+98. What's the output?
+const x = function(a) {
+  delete a;
+  return a;
+}
+console.log(x(1));
+
+99. What's the output?
+let obj = {a: 1, b: 2, a: 3};
+console.log(Object.keys(obj));
+
+100. What's the output?
+(function(){
+    var a = b = 3;
+})();
+console.log("a defined? " + (typeof a !== 'undefined'));
+console.log("b defined? " + (typeof b !== 'undefined'));
+
+========================================================================
+TIPS FOR SOLVING OUTPUT-BASED QUESTIONS:
+========================================================================
+
+1. Always trace through the code step by step
+2. Pay attention to variable hoisting and scope
+3. Understand the difference between == and === comparisons
+4. Remember how 'this' binding works in different contexts
+5. Know the order of execution in the event loop
+6. Understand type coercion rules
+7. Be familiar with array and object reference behavior
+8. Practice async/await and Promise execution order
+
+COMMON JAVASCRIPT GOTCHAS:
+=========================
+
+• Variables declared with 'var' are hoisted and initialized with undefined
+• Arrow functions don't have their own 'this' context
+• Objects are compared by reference, not by value
+• Type coercion can produce unexpected results
+• The event loop prioritizes microtasks over macrotasks
+• Closures retain access to outer scope variables
+
+========================================================================
+End of Document - Total Questions: 100
+========================================================================

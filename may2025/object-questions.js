@@ -306,8 +306,285 @@ function recur(arr, sum={value:0}){
 }
 console.log(recur(Input))
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
+const items = [
+    { id: 1, parentId: null, label: "Home" },
+    { id: 2, parentId: 1, label: "Products" },
+    { id: 3, parentId: 2, label: "Electronics" },
+    { id: 4, parentId: 2, label: "Clothes" },
+    { id: 5, parentId: 3, label: "Mobile" }
+  ];
+
+  function build(items) {
+    let map = {}
+    let tree = []
+    items.forEach((item) => {
+      map[item.id] = { ...item, children: [] }
+    })
+    console.log(map)
+    items.forEach((item) => {
+      if (item.parentId === null) {
+        tree.push(map[item.id])
+      } else {
+        map[item.parentId].children.push(map[item.id])
+      }
+    })
+    return tree
+
+  }
+
+  console.log(build(items))
+
+
+  let Input = { a: 1, b: { c: 2 }, d: 3, e: { f: 4, g: 5, h: { i: 6 } } }
+  // - Output: [['a',1],['b.c',2]]
+
+  function flat(input, key = "", res = []) {
+    for (let j in input) {
+      if (typeof input[j] === "object") {
+        flat(input[j], key + j + ".", res)
+        continue;
+      }
+      res.push([key + j, input[j]])
+      console.log(j, "jjjjjjjjjjjjjjjjjjjjj")
+    }
+    return res;
+  }
+  console.log(flat(Input))
+
+
+  let input = {
+    label: 'Home',
+     children: [{
+      label: 'Products', 
+      children: [{
+        label:'Electronics', 
+          children: [{ label: 'Mobile' }]
+      }]
+    }]
+  };
+  // Output: ['Home','Home > Products','Home > Products > Electronics','Home > Products >
+  // Electronics > Mobile']
+
+  function letFlat(input, prefix="", res=[]) {
+    res.push(prefix + input.label)
+    if (input.children && input.children.length > 0) {
+      input.children.forEach(child => letFlat(child, prefix + input.label + " > ", res))
+    }
+    return res;
+  }
+  console.log(letFlat(input))
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const input = {a:{b:{c:{d:1}}}}
+// - Output: 4
+
+function countfunc(input, count={value:1}){
+    for (let i in input){
+        if (typeof input[i] ==="object"){
+            count.value+=1
+            countfunc(input[i], count)
+        }
+    }
+    return count.value
+}
+
+console.log(countfunc(input))
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// Question 1 :- 
+
+function isAnagram(str1, str2) {
+  if (str1.length !== str2.length) return false;
+
+  let count = {};
+
+  for (let ch of str1) {
+    count[ch] = (count[ch] || 0) + 1;
+  }
+
+  for (let ch of str2) {
+    if (!count[ch]) return false;
+    count[ch]--;
+  }
+
+  return true;
+}
+
+console.log(isAnagram("listen", "silent")); // true
+console.log(isAnagram("hello", "world"));   // false
+
+// Myself :- 
+// Check if two strings are anagrams.
+const a = "listen"
+const b = "sileunt" 
+// → true
+
+obj = {}
+obj2= {}
+
+for (let i of a){
+   if (obj[i]){
+       obj[i]+=1
+   }else{
+       obj[i] =1
+   }
+}
+for (let i of b){
+   if (obj2[i]){
+       obj2[i]+=1
+   }else{
+       obj2[i] =1
+   }
+}
+
+let flag = true
+
+flag = a.length == b.length
+
+for (let i in obj){
+    console.log(obj[i] !== obj2[i])
+    if (obj[i] !== obj2[i]){
+        flag = false 
+    }
+    
+}
+
+console.log(flag)
+
+
+// Question 2 :- 
+
+const string = "I love JavaScript so much" 
+// → "I evol JavaScript os much
+
+const arr = string.split(" ")
+
+let ans = []
+for (let i in arr){
+   if (i%2 !== 0){
+       let a = []
+       a = arr[i].split("").reverse().join("")
+       ans.push(a)
+   }else{
+       ans.push(arr[i])
+   }
+}
+console.log(ans.join(" "))
+
+
+// Question 3 :- 
+let arr = [1,3,4,5,6,9,10];
+
+let first = -Infinity;
+let second = -Infinity;
+
+for(let item of arr){
+    if(first<item){
+        console.log(item, "iiiiiiiiiii")
+        second = first;
+        first = item;
+    }else if(item>second && item<first){
+        second = item;
+    }
+}
+
+console.log(first , second)
+
+// Myself :- 
+const input = [21 , 20, 19, 200, 78,100, 65]
+// Output: 9
+let max = 0
+for (let i =0; i<input.length; i++){
+    if (max <=input[i]){
+        max = input[i]
+    }
+}
+
+// console.log(max ) = 10 
+let second = max
+
+max=0
+for (let i =0; i<input.length; i++){
+    if (max < input[i] && input[i] < second){
+        max = input[i]
+    }
+}
+console.log(max)
+
+// Question 4 :- 
+const input = [ 
+  { dept: "IT", name: "A" },
+  { dept: "HR", name: "B" },
+  { dept: "IT", name: "C" }
+]
+// Output:
+// {
+//   IT: [{name: "A"}, {name: "C"}],
+//   HR: [{name: "B"}]
+// }
+
+
+const ans = input.reduce((acc, {dept, name})=>{
+   acc[dept] ? acc[dept].push({"name":name}) : acc[dept] = [{"name": name}]
+   return acc
+},{})
+
+console.log(ans )
+
+
+// Question 5 ;-
+// Remove falsy values from an array.
+const ar = [0, false, '', 'hello', undefined, 5]
+// → ['hello', 5]
+
+// falsy = 0 false , "" , undefined
+
+const arr = [0 ,false , "" , undefined]
+const ans =[]
+for (let i of ar){
+    if (arr.includes(i)){
+        continue
+    }
+    ans.push(i)
+}
+    
+console.log(ans)
+Second eazy oneliner - 
+console.log(ar.filter(Boolean))
+
+
+
+// Question 6:-
+
+const ar ={ name: "John", age: 25 } 
+// → "name=John&age=25"
+s=""
+for (let i in ar){
+    s+=`${i}=${ar[i]}&`
+}
+
+ans = s.split("")
+ans.pop()
+// console.log(ans)
+console.log(ans.join(""))
+
+
+// Question 7 :-
+const input= 5
+// Output: 0, 1, 1, 2, 3
+
+function recursion(i,a=0,b=1,res=[]){
+    if(res.length == i) return res
+    res.push(a)
+    console.log(a, b)
+    return recursion(i, b, a+b, res)
+}
+console.log(recursion(input))
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
