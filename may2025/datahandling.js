@@ -14,10 +14,10 @@ const navTree = {
     }
   ]
 };
+
 // console.log(navTree.children[0].children[0].children[0].label)
 
 function recusion(navTree, res = []) {
-
   res.push(navTree.label)
   if (navTree.children) {
     for (let item of navTree.children) {
@@ -26,10 +26,8 @@ function recusion(navTree, res = []) {
     }
   }
   return res
-
-
-
 }
+
 console.log(recusion(navTree))
 // output - 4 (Count total nodes in nested tree)
  
@@ -47,13 +45,9 @@ function recusion(tree, res=[], count={value:0}){
     return count.value
 }
 
-<<<<<<< HEAD
 console.log(recusion(navTree))
-=======
 const flat = (node) => [node.label, ...(node.children ? node.children.flatMap(flat) : [])];
->>>>>>> fb4171eb49d938d1ad19682adc1b778942a3b487
 
-<<<<<<< HEAD
 
 const recur=(tree, res=[])=>{
     if (tree.label){
@@ -63,7 +57,6 @@ const recur=(tree, res=[])=>{
         for (let key of tree.children){
             recur(key, res)
         }
-=======
 console.log(flat(navTree));
 
 
@@ -74,7 +67,6 @@ const recur = (tree, res = []) => {
   if (tree.children) {
     for (let key of tree.children) {
       recur(key, res)
->>>>>>> fb4171eb49d938d1ad19682adc1b778942a3b487
     }
   }
   return res
@@ -120,8 +112,6 @@ const items = [
   { name: "Carrot", category: "Vegetable" },
 ];
 
-<<<<<<< HEAD
-=======
 
 // [
 //     {Friuts : [apple , banana],
@@ -291,4 +281,3 @@ console.log(fromDotNotation(obj6))
 
 
 
->>>>>>> fb4171eb49d938d1ad19682adc1b778942a3b487

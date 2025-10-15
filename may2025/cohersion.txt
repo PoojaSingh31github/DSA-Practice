@@ -58,11 +58,12 @@ undefined + 1 → NaN
 
 "5" + 2 + 3 → "523"
 
-+true → 1
++true → 1 (and ++true will give error )
 
 Boolean([]) → true
 
 Boolean("false") → true
+
 Boolean(false) → true
 
 'b' + 'a' + + 'a' + 'a' → "baNaNa" 🍌
@@ -92,7 +93,7 @@ Loose (==) vs Strict (===) Equality	Know which one does coercion (==)
   
 Object to primitive coercion	Using valueOf() and toString() — objects become strings/numbers when forced
   
-[] == ![] → true	Mind-bending logic due to coercion
+[] == ![] → true	Mind-bending logic due to coercion ................([]==[] false due to reference checking)
 
 Template Literals & Coercion	${null}, ${undefined}, ${true} etc
 
@@ -125,15 +126,19 @@ console.log([undefined] == false) =true
 console.log(false == 'false') = false
 console.log("5" == 5) = true
 console.log(parseInt('08')) = 8
-console.log(' \t\r\n ' == 0) true
-console.log(null == 0)  flse
+console.log(' \t\r\n ' == 0) true - Ye ek string hai, sirf whitespaces:
+                                    \t → tab
+                                    \r → carriage return
+                                    \n → newline
+                                    So string me koi visible character nahi hai, bas spaces/tabs/newlines.
+console.log(null == 0)  false
 console.log(Number([]))  0
 console.log([] == ![]) true
 console.log([1] + 1); 11
 console.log([] + 1); 1
 console.log([] + {}); [[object Object]]
 console.log([] == []); false
-console.log([]==={})
+console.log([]==={}) false
 console.log([] + []); ""
 console.log([] + {});[object Object]
 console.log({} + []);[object Object]
@@ -174,9 +179,9 @@ HOISTING & VARIABLE DECLARATIONS
 ===============================
 
 1. What's the output?
-console.log(x);
+console.log(x);             - undefine
 var x = 5;
-console.log(x);
+console.log(x);                   5
 
 2. What's the output?
 function sayHi() {
@@ -185,7 +190,7 @@ function sayHi() {
   var name = 'Lydia';
   let age = 21;
 }
-sayHi();
+sayHi();                         lydia, error age not defined 
 
 3. What's the output?
 var x = 1;
@@ -195,16 +200,16 @@ function foo() {
   function x() {}
 }
 foo();
-console.log(x);
+console.log(x);                    1 - var are functional scoped variables 
 
 4. What's the output?
-console.log(printName());
+console.log(printName());              hi my name...
 function printName(){
     return "Hi my name is Bob"
 }
 
 5. What's the output?
-console.log(printName());
+console.log(printName());              printanme is not defined (but it works better in react)
 const printName = () => {
     return "Hi my name is Bob"
 }
@@ -215,11 +220,11 @@ CLOSURES & SCOPE
 6. What's the output?
 for (var i = 0; i < 3; i++) {
   setTimeout(() => console.log(i), 1);
-}
+}                                                   3,3,3 (it can print 0,1,2 if i pas settimeout in iffi function)
 
 for (let i = 0; i < 3; i++) {
   setTimeout(() => console.log(i), 1);
-}
+}                                                        0,1,2
 
 7. What's the output?
 function outer() {
@@ -230,7 +235,7 @@ function outer() {
   }
   inner();
 }
-outer();
+outer();                           undefined x first got in self bolck eitther is is undefined 
 
 8. What's the output?
 let a = 10;
@@ -238,7 +243,7 @@ if(true){
    let a = 20;
    console.log(a, "inside");
 }
-console.log(a, "outside");
+console.log(a, "outside");            20 "inside" 10 "outside"
 
 THIS BINDING & ARROW FUNCTIONS
 ==============================
@@ -252,8 +257,8 @@ const shape = {
   perimeter: () => 2 * Math.PI * this.radius,
 };
 
-console.log(shape.diameter());
-console.log(shape.perimeter());
+console.log(shape.diameter());                20 ,
+console.log(shape.perimeter());               NAN (becouse this.radius is unefined in perameter funtion... 2* 22/7 * undefiend = isNaN)
 
 10. What's the output?
 const person = { name: 'Lydia' };
@@ -262,8 +267,8 @@ function sayHi(age) {
   return ${this.name} is ${age};
 }
 
-console.log(sayHi.call(person, 21));
-console.log(sayHi.bind(person, 21));
+console.log(sayHi.call(person, 21));                 lydia is 21
+console.log(sayHi.bind(person, 21));                function console hoga ---- to get value we need to call it again
 
 11. What's the output?
 var person = {
@@ -272,7 +277,9 @@ var person = {
     console.log('Hello, ' + this.name);
   }
 };
-var greetFunc = person.greet; -> this line cannot work, it needs to bind with the bind function (as a standalone function)
+
+console.log(person.greet())          ----------- it can give output of hello john
+ var greetFunc = person.greet; -> this line cannot work, it needs to bind with the bind function (as a standalone function) without bind it will give hello undefined
 var greetFunc = person.greet.bind(person);
 greetFunc();
 
@@ -284,19 +291,19 @@ let c = { greeting: 'Hey!' };
 let d;
 d = c;
 c.greeting = 'Hello';
-console.log(d.greeting);
+console.log(d.greeting);              hello
 
 13. What's the output?
 const a = {};
 const b = { key: 'b' };
 const c = { key: 'c' };
-a[b] = 123;
-a[c] = 456;
-console.log(a[b]);
+a[b] = 123;                            a["object:object"] = 123
+a[c] = 456;                            a["object:object"] = 456
+console.log(a[b]);                      456
 
 14. What's the output?
 const obj = { a: 'one', b: 'two', a: 'three' };
-console.log(obj);
+console.log(obj);                             {a:three. b:two}        
 
 15. What's the output?
 function checkAge(data) {
@@ -308,42 +315,42 @@ function checkAge(data) {
     console.log(Hmm.. You don't have an age I guess);
   }
 }
-checkAge({ age: 18 });
+checkAge({ age: 18 });                                  hmm... you dont have an age i guess 
 
 TYPE COERCION & COMPARISONS
 ==========================
 
 16. What's the output?
-console.log(3 + 4 + '5');
+console.log(3 + 4 + '5');                             75
 
 17. What's the output?
-console.log('10'+20+30);
-console.log('10'+'20'+30);
-console.log(10+20+'30');
+console.log('10'+20+30);                                 102030
+console.log('10'+'20'+30);                                   102030
+console.log(10+20+'30');                                       3030
 
 18. What's the output?
-console.log(3 > 2 > 1);   true>1 -----> 1>1 ----- false ans 
-console.log(3 > 2 > 0);   true answer 
+console.log(3 > 2 > 1);                        true>1 -----> 1>1 ----- false ans 
+console.log(3 > 2 > 0);                               true answer 
 
 19. What's the output?
-console.log([] + []);
+console.log([] + []);                                    "" emplty stirng
 
 20. What's the output?
 let a = 3;
 let b = new Number(3);
 let c = 3;
 
-console.log(a == b);
-console.log(a === b);
-console.log(b === c);
+console.log(a == b);                          true
+console.log(a === b);                          falswe
+console.log(b === c);                              false
 
 21. What's the output?
-console.log(+true);
-console.log(!'Lydia');
-console.log(++true); -------------> error 
+console.log(+true);                                1
+console.log(!'Lydia');                               false
+console.log(++true);                          -------------> error 
 
 22. What's the output?
-console.log(typeof typeof 1);
+console.log(typeof typeof 1);                        string
 
 ARRAYS & ARRAY METHODS
 =====================
@@ -351,29 +358,29 @@ ARRAYS & ARRAY METHODS
 23. What's the output?
 const numbers = [1, 2, 3];
 numbers[10] = 11;
-console.log(numbers);
+console.log(numbers);                         1,2,3, <7 empty items> , 11
 
 24. What's the output?
 var array = ["1","2","3","4","5"];
 delete array[3];
-console.log(array.length);
+console.log(array.length);       4
 
 25. What's the output?
 [1, 2, 3].map(num => {
   if (typeof num === 'number') return;
   return num * 2;
-});
+});                                                  [undefined, undefined, undefined]
 
 26. What's the output?
 const arr1 = [1,2,3];
 const arr2 = [1,2,3];
 const str = "1,2,3";
 
-console.log(arr1 == str);
-console.log(arr1 == arr2);
+console.log(arr1 == str);                true
+console.log(arr1 == arr2);           false
 
 27. What's the output?
-console.log([11, 2, 31] + [4, 5, 6]);
+console.log([11, 2, 31] + [4, 5, 6]);           [11,2,314,5,6]
 
 EVENT LOOP & ASYNCHRONOUS PROGRAMMING
 ====================================
@@ -385,7 +392,7 @@ const baz = () => console.log('Third');
 
 bar();
 foo();
-baz();
+baz();                                             first , third, second
 
 29. What's the output?
 console.log('Start');
@@ -398,7 +405,7 @@ Promise.resolve().then(function() {
   console.log('Promise');
 });
 
-console.log('End');
+console.log('End');                      start end promise, timout
 
 30. What's the output?
 function hello() {
@@ -408,7 +415,7 @@ function hello() {
     })
   console.log("3");
 }
-hello();
+hello();                                    1, 3, 2
 
 PROMISES & ASYNC/AWAIT
 =====================
@@ -422,21 +429,21 @@ const secondPromise = new Promise((res, rej) => {
   setTimeout(res, 100, 'two');
 });
 
-Promise.race([firstPromise, secondPromise]).then(res => console.log(res));
+Promise.race([firstPromise, secondPromise]).then(res => console.log(res));           -------->  two
 
 32. What's the output?
 async function getData() {
   return await Promise.resolve('I made it!');
 }
 
-const data = getData();
-console.log(data);
+const data = getData(); 
+console.log(data);    -----------------> pending promise...  to get the data use try catch block so that i made it can console         
 
 33. What's the output?
 Promise.resolve(1)
   .then(() => 2)
   .then(() => 3)
-  .then(console.log);
+  .then(console.log);       ---------> 3
 
 FUNCTIONS & ADVANCED CONCEPTS
 ============================
@@ -445,19 +452,19 @@ FUNCTIONS & ADVANCED CONCEPTS
 function sum(a, b) {
   return a + b;
 }
-sum(1, '2');
+sum(1, '2');               -------> 12
 
 35. What's the output?
 function sayHi() {
   return (() => 0)();
 }
-console.log(typeof sayHi());
+console.log(typeof sayHi());            ----- number
 
 36. What's the output?
 function getAge(...args) {
   console.log(typeof args);
 }
-getAge(21);
+getAge(21);                    -------> object.......     argument are in array so type of object
 
 37. What's the output?
 function* generator(i) {
@@ -475,18 +482,18 @@ PROTOTYPES & CLASSES
 
 38. What's the output?
 class Chameleon {
-  static colorChange(newColor) {
-    this.newColor = newColor;
+  static colorChange(newColor){                 ye static class k upr h kisis instances k upr ni (mas it cannot b use but any otyher 
+    this.newColor = newColor;                      to ye bs chameloen.colorChange se access kiya ja sakta h not by freddie.colorChange
     return this.newColor;
   }
 
-  constructor({ newColor = 'green' } = {}) {
+  constructor({ newColor = 'green' } = {}){
     this.newColor = newColor;
   }
 }
 
 const freddie = new Chameleon({ newColor: 'purple' });
-console.log(freddie.colorChange('orange'));
+console.log(freddie.colorChange('orange'));           --------->   TypeError: freddie.colorChange is not a function
 
 39. What's the output?
 function Person(firstName, lastName) {
@@ -495,11 +502,11 @@ function Person(firstName, lastName) {
 }
 
 const member = new Person('Lydia', 'Hallie');
-Person.getFullName = function() {
-  return ${this.firstName} ${this.lastName};
+Person.getFullName = function() {                            ----- ye person funtion k upr ek proety bana ra h na ki on instance (member) (mtl idr perosn ki jaga meember likhe to memeber pr ek property banaye jo memebre me hi accessabile hogi )
+  return ${this.firstName} ${this.lastName}; 
 };
 
-console.log(member.getFullName());
+console.log(member.getFullName());    = TypeError: member.getFullName is not a function
 
 SPREAD OPERATOR & DESTRUCTURING
 ==============================
@@ -507,7 +514,7 @@ SPREAD OPERATOR & DESTRUCTURING
 40. What's the output?
 const person1 = { name: 'xyz', age: 21 };
 const person2 = { city: 'abc', ...person1 };
-console.log(person2);
+console.log(person2);               {city, name, age} all
 
 41. What's the output?
 const user = {
@@ -515,11 +522,11 @@ name: "Surbhi dighe",
 country: "India"
 };
 const { name: fullname, country } = user;
-console.log(fullname);
-console.log(name);
+console.log(fullname);      Surbhi dighe
+console.log(name);        name is not defined
 
 42. What's the output?
-[...'Lydia'];
+[...'Lydia'];                 -----------> [l,y,d,i,a]
 
 ERROR HANDLING & TRY-CATCH
 ==========================
@@ -531,10 +538,10 @@ ERROR HANDLING & TRY-CATCH
     throw new Error();
   } catch (x) {
     (x = 1), (y = 2);
-    console.log(x);
+    console.log(x);            1 
   }
-  console.log(x);
-  console.log(y);
+  console.log(x);            undefiend
+  console.log(y);          2 
 })();
 
 ADVANCED TYPE CHECKING
@@ -544,14 +551,14 @@ ADVANCED TYPE CHECKING
 const obj = { 1: 'a', 2: 'b', 3: 'c' };
 const set = new Set([1, 2, 3, 4, 5]);
 
-obj.hasOwnProperty('1');
-obj.hasOwnProperty(1);
-set.has('1');
-set.has(1);
+console.log(obj.hasOwnProperty('1'));         ------- true
+console.log(obj.hasOwnProperty(1));            --------true
+console.log(set.has('1'));                   false
+console.log(set.has(1));                      true
 
 45. What's the output?
-console.log(0 == false);
-console.log(1 == true);
+console.log(0 == false);            true
+console.log(1 == true);          true
 
 COMPLEX LOGIC & LOOPS
 ====================
@@ -559,38 +566,47 @@ COMPLEX LOGIC & LOOPS
 46. What's the output?
 for (let i = 1; i < 5; i++) {
   if (i === 3) continue;
-  console.log(i);
-}
+  console.log(i);              
+}                            1,2,4
 
 47. What's the output?
 let number = 0;
-console.log(number++);
-console.log(++number);
-console.log(number);
+console.log(number++);                0
+console.log(++number);                2
+console.log(number);                  2      
 
 STRING METHODS & TEMPLATE LITERALS
 =================================
 
 48. What's the output?
+
 function getPersonInfo(one, two, three) {
-  console.log(one);
-  console.log(two);
-  console.log(three);
+  console.log(one);             -----------[ '', ' is ', ' years old' ]
+  console.log(two);                 --------Lydia
+  console.log(three);                ------21
 }
 
 const person = 'Lydia';
-const age = 21;
-
-getPersonInfo`${person} is ${age} years old`;
+const age = 21;                                    
+getPersonInfo`${person} is ${age} years old`;   ---------tagged template literal
+                                                Function ko 2 cheezein milti hain automatically:
+                                                  strings array → static parts of the template....Static strings → ["", " is ", " years old"]
+                                                  substitutions → values inside ${}......Substitutions → ["Lydia", 21]
 
 49. What's the output?
-console.log('apple'.split(''));
+console.log('apple'.split(''));           [a,p,p,l,e]
 
 REGULAR EXPRESSIONS & PARSING
 ============================
 
 50. What's the output?
-const num = parseInt('7*6', 10);
+const num = parseInt('7*6', 10);    How '7*6' is parsed.....  parseInt(string, radix)
+                                    String: '7*6'
+                                    Radix: 10 (decimal)
+                                    Parsing steps:
+                                    First char '7' → valid digit in base 10 → keep it
+                                    Next char '*' → invalid → stop parsing
+                                    So only '7' is considered → converted to number -----→ 7        
 
 ADVANCED OBJECT MANIPULATION
 ===========================
@@ -600,7 +616,7 @@ let person = { name: 'Lydia' };
 const members = [person];
 person = null;
 
-console.log(members);
+console.log(members);               --------[{ name: 'Lydia' }]
 
 52. What's the output?
 function getInfo(member, year) {
@@ -611,10 +627,10 @@ function getInfo(member, year) {
 const person = { name: 'Sarah' };
 const birthYear = '1997';
 
-getInfo(person, birthYear);
+getInfo(person, birthYear);              
 
-console.log(person, birthYear);
-
+console.log(person, birthYear);          -----------name:"lydia, year: 1997
+ 
 REDUCE & ARRAY OPERATIONS
 ========================
 
@@ -624,23 +640,23 @@ REDUCE & ARRAY OPERATIONS
     return acc.concat(cur);
   },
   [1, 2],
-);
+);                                      ------------------[1,2,0,1,2,3]
 
 BOOLEAN LOGIC & FALSY VALUES
 ===========================
 
 54. What's the output?
-!!null;
-!!'';
-!!1;
+!!null;             ------false
+!!'';                    false
+!!1;                      true
 
-55. Which of these values are falsy?
-0;
-new Number(0);
-('');
-(' ');
-new Boolean(false);
-undefined;
+55. Which of these values are falsy?    ----------falsy values      false, 0, -0, 0n (BigInt zero), "" (empty string), null, undefined, NaN
+  0;                          falsy
+  new Number(0);
+  ('');                       falsy
+  (' ');
+  new Boolean(false);          
+  undefined;                  falsy
 
 VARIABLE REDECLARATION
 =====================
@@ -648,12 +664,12 @@ VARIABLE REDECLARATION
 56. What's the output?
 var num = 8;
 var num = 10;
-console.log(num);
+console.log(num);           10
 
 57. What's the output?
 var a = 10;
 let a = 20;
-console.log(a)
+console.log(a)              a already being declared
 
 OBJECT PROPERTY ACCESS
 =====================
@@ -668,9 +684,9 @@ const mouse = {
   small: true,
 };
 
-mouse[bird.size];
-mouse[bird["size"]];
-mouse.bird.size;
+mouse[bird.size];              mouse.small = true        (bird.size = small )
+mouse[bird["size"]];             true
+mouse.bird.size;               mouse.bird is undefiend --------- error (undefied.size) TypeError
 
 JSON & OBJECT METHODS
 ====================
@@ -678,12 +694,12 @@ JSON & OBJECT METHODS
 59. What's the output?
 let x = '{ "b": 1, "c": 2 }';
 let y = JSON.parse(x);
-console.log(typeof y);
+console.log(typeof y);          ----------- object
 
 60. What's the output?
 let x = { b: 1, c: 2 };
 let y = Object.keys(x);
-console.log(y.length);
+console.log(y.length);      --------------------2
 
 SWITCH STATEMENTS
 ================
@@ -702,7 +718,17 @@ switch (1) {
   default:
     text = "No matches found!";
 }
-console.log(text);
+console.log(text);                        switch(1) → means: go to case 1.
+
+                                Enters case 1:
+                                → text = "This is one";
+                                ⚠️ But there’s no break here!
+
+                                Since there’s no break → execution falls through to the next case (case 2).
+
+                                case 2:
+                                → text = "This is two"; --------------- answer 
+                                → break; stops execution here
 
 ADVANCED ARRAY FILTERING
 =======================
@@ -710,12 +736,12 @@ ADVANCED ARRAY FILTERING
 62. What's the output?
 const arr = [11, 0, '', false, 2, 1];
 const filtered = arr.filter(Boolean);
-console.log(filtered);
+console.log(filtered);        ---------- [11,2,1]
 
 63. What's the output?
 const arr = [10, -1, 2];
 arr.sort((a, b) => a - b);
-console.log(arr);
+console.log(arr);                           -1, 2,10
 
 DEEP VS SHALLOW COPY
 ===================
@@ -724,9 +750,9 @@ DEEP VS SHALLOW COPY
 let a={ x:1, y: {alpha:10,beta:20} };
 let b = {...a};
 b.x=101;
-b.y.alpha=1001;
-console.log(a.x);
-console.log(a.y.alpha);
+b.y.alpha=1001; 
+console.log(a.x);                         1
+console.log(a.y.alpha);                    1001
 
 65. What's the output?
 const userDetails = {
@@ -743,8 +769,8 @@ let cloneUserDetails = { ...userDetails };
 userDetails.age = 22;
 userDetails.address.city = "Banglore";
 
-console.log(cloneUserDetails.age);
-console.log(cloneUserDetails.address.city);
+console.log(cloneUserDetails.age);                              22
+console.log(cloneUserDetails.address.city);                     Banglore
 
 GLOBAL OBJECTS & WINDOW
 =======================
@@ -752,7 +778,7 @@ GLOBAL OBJECTS & WINDOW
 66. What's the output?
 let greeting;
 greetign = {}; // Typo!
-console.log(greetign);
+console.log(greetign);                   -------  {}
 
 67. What's the output?
 function bark() {
@@ -760,7 +786,10 @@ function bark() {
 }
 
 bark.animal = 'dog';
-// What happens?
+console.log(bark.animal)            dog in output
+console.log(bark)                   [Function: bark] { animal: 'dog' } ------ function with value (function ek object bhi hota hai jisme extra properties attach kar sakte hai.)
+console.log(bark())                 Woof!
+// What happens?                            become an varable now 
 
 ADVANCED STRING OPERATIONS
 ==========================
@@ -772,7 +801,7 @@ String.prototype.giveLydiaPizza = () => {
 
 const name = 'Lydia';
 
-console.log(name.giveLydiaPizza())
+console.log(name.giveLydiaPizza())               ----------------   Just give Lydia pizza already!
 
 COMPLEX ASYNC PATTERNS
 ======================
@@ -781,7 +810,7 @@ COMPLEX ASYNC PATTERNS
 queueMicrotask(() => console.log('microtask'));
 setTimeout(() => console.log('timeout'), 0);
 Promise.resolve().then(() => console.log('promise'));
-console.log('sync');
+console.log('sync');                                          sync, microtask, promise, timeout                            
 
 ADVANCED FUNCTION FEATURES
 ==========================
@@ -790,10 +819,11 @@ ADVANCED FUNCTION FEATURES
 function sum(a=5, b=7){
     return a+b;
 }
-console.log(sum(undefined, 20));
+console.log(sum(undefined, 20));                                 25
 
 71. What's the output?
-const sum = eval('10*10+5');
+const sum = eval('10*10+5');                            
+console.log(sum)                                -------------- 105
 
 PROTOTYPE CHAIN
 ==============
@@ -804,11 +834,11 @@ function Person(firstName, lastName) {
   this.lastName = lastName;
 }
 
-const lydia = new Person('Lydia', 'Hallie');
+const lydia = new Person('Lydia', 'Hallie');                
 const sarah = Person('Sarah', 'Smith');
 
-console.log(lydia);
-console.log(sarah);
+console.log(lydia);                  {firstname lydia, lastname:Hallie}    
+console.log(sarah);                    undefined
 
 FOR-IN LOOPS
 ===========
@@ -820,30 +850,30 @@ const person = {
 };
 
 for (const item in person) {
-  console.log(item);
-}
+  console.log(item);                         name. age
+}                                          
 
 COMPLEX COMPARISONS
 ==================
 
 74. What's the output?
-console.log(5 < 6 < 7);
+console.log(5 < 6 < 7);                             true<7------------true
 
 75. What's the output?
-console.log(7 > 6 > 5);
+console.log(7 > 6 > 5);                                true>5  -------- false
 
 ARRAY INDEX OPERATIONS
 ======================
 
 76. What's the output?
 const arr = [2,3,5,2,8,10,5];
-console.log(arr.indexOf(5))
+console.log(arr.indexOf(5))               -----------------  2
 
 77. What's the output?
 const array = [8, 18, 28, 38];
-const result = array.map(element => element + 2)
+const result = array.map(element => element + 2)             
                .filter((element) => element > 25);
-console.log(result);
+console.log(result);                                 ------------- [30,40]
 
 VARIABLE SCOPE EDGE CASES
 ========================
@@ -851,18 +881,18 @@ VARIABLE SCOPE EDGE CASES
 78. What's the output?
 let x = ["a","b","c"];
 let y = ["a","b","c"];
-let z = y;
-console.log(x == y);
-console.log(z == y);
-console.log(z == x);
+let z = y;                     
+console.log(x == y);                  // false
+console.log(z == y);                    true  
+console.log(z == x);                      false
 
 79. What's the output?
 let x;
-console.log(x);
+console.log(x);             // undefied
 x = 20;
-console.log(x);
+console.log(x);             // 20
 x = "John";
-console.log(x);
+console.log(x);                 //john
 
 FUNCTION PARAMETER HANDLING
 ==========================
@@ -874,14 +904,14 @@ function modify(obj) {
 
 let person = { name: "Original" };
 modify(person);
-console.log(person.name);
+console.log(person.name);             -----------updated
 
 function reassign(obj) {
     obj = { name: "New Object" };
 }
 
 reassign(person);
-console.log(person.name);
+console.log(person.name);                ------------ updated
 
 COMPLEX OBJECT OPERATIONS
 ========================
@@ -889,12 +919,12 @@ COMPLEX OBJECT OPERATIONS
 81. What's the output?
 const a = {x : 1};
 const b = {x : 1};
-console.log(a === b);
-console.log(a.x === b.x)
+console.log(a === b);                           //false
+console.log(a.x === b.x)                        //  true
 
 82. What's the output?
 const arr = ["A","B","C","D","E"]
-console.log(Object.keys(arr));
+console.log(Object.keys(arr));        [0,1,2,3,4]      insted of error inde becomes key            
 
 DESTRUCTURING WITH DEFAULTS
 ===========================
@@ -904,14 +934,14 @@ const person = {
   firstName: 'Surbhi',
 };
 const { lastName="dighe" } = person;
-console.log(lastName);
+console.log(lastName);                           dighe, and person = { firstName: 'Surbhi' } not last name included in it      
 
 84. What's the output?
 const person = {
   firstName: 'Surbhi',
 };
 const { firstName="Henry"} = person;
-console.log(firstName);
+console.log(firstName);                           ------ surbhi    as this key exist with value tyhat why henry not consoled     
 
 VARIABLE TRUTHINESS
 ==================
@@ -920,10 +950,10 @@ VARIABLE TRUTHINESS
 var x = 0;
 var y = 10;
 if(x){
-  console.log(x);
+  console.log(x);                       nothing will console          
 }
 if(y){
-  console.log(y);
+  console.log(y);                        10
 }
 
 OBJECT DESTRUCTURING
@@ -935,7 +965,7 @@ var1: 1,
 var2: 2
 };
 const { var1, var2 } = obj;
-console.log(var1, var2);
+console.log(var1, var2);                           1,2
 
 ARRAY TYPE CHECKING
 ==================
@@ -943,7 +973,7 @@ ARRAY TYPE CHECKING
 87. What's the output?
 function checkValue(value){
     var result = Array.isArray(value);
-    console.log(result);
+    console.log(result);                                  true
 }
 checkValue([1,2,3]);
 
@@ -951,12 +981,12 @@ MATHEMATICAL OPERATIONS
 ======================
 
 88. What's the output?
-console.log(10 - "5");
-console.log("5" - 10);
+console.log(10 - "5");                            5
+console.log("5" - 10);                            -5
 
 89. What's the output?
-console.log(10 + "5");
-console.log("5" + 10);
+console.log(10 + "5");                               105
+console.log("5" + 10);                               510
 
 ADVANCED VARIABLE ASSIGNMENT
 ============================
@@ -964,12 +994,12 @@ ADVANCED VARIABLE ASSIGNMENT
 90. What's the output?
 var z = 1,
 y = z = typeof y;
-console.log(y);
+console.log(y, z);                                  undefined, undefined
 
 91. What's the output?
 let f = "8";
 let a = 1;
-console.log((+f)+a+1);
+console.log((+f)+a+1);                             8+1+1 =10
 
 POST/PRE INCREMENT
 =================
@@ -977,14 +1007,14 @@ POST/PRE INCREMENT
 92. What's the output?
 let x = 5;
 let y = x++;
-console.log(y);
-console.log(x)
+console.log(y);                                  5
+console.log(x)                                   6
 
 93. What's the output?
 let x = 5;
 let y = ++x;
-console.log(y);
-console.log(x)
+console.log(y);                             6
+console.log(x)                              6
 
 DELETE OPERATOR
 ==============
@@ -996,33 +1026,25 @@ company: 'Acme'
 
 var employee1 = Object.create(Employee);
 delete employee1.company
-console.log(employee1.company);
+console.log(employee1.company);                       acme
 
 delete Employee.company
-console.log(employee1.company);
+console.log(employee1.company);                       undefined
 
 FUNCTION RETURN STATEMENTS
 =========================
 
 95. What's the output?
-function f1()
-{
-return {
-name: "Sandeep"
-};
+function f1(){
+  return {name: "Sandeep" };
 }
 
-function f2()
-{
-return
-
-{
-name: "Sandeep"
-};
+function f2() {
+  return {   name: "Sandeep"   };
 }
 
-console.log(f1());
-console.log(f2());
+console.log(f1());               {name:Sandeep}
+console.log(f2());              {name:Sandeep}
 
 ADVANCED ARRAY OPERATIONS
 ========================
@@ -1030,7 +1052,7 @@ ADVANCED ARRAY OPERATIONS
 96. What's the output?
 const arr = [1, 2, 3, 4, 5, -6, 7];
 arr.length = 0;
-console.log(arr);
+console.log(arr);                          []
 
 COMPLEX ASYNC WITH MULTIPLE APIS
 ===============================
@@ -1047,7 +1069,7 @@ new Promise(resolve => {
   resolve();
 }).then(() => console.log('5'));
 
-console.log('6');
+console.log('6');                          ---------------      1,4,6,2,5,3
 
 ADDITIONAL CHALLENGING QUESTIONS
 ===============================
@@ -1057,7 +1079,7 @@ const x = function(a) {
   delete a;
   return a;
 }
-console.log(x(1));
+console.log(x(1));                        --------------  1
 
 99. What's the output?
 let obj = {a: 1, b: 2, a: 3};
@@ -1067,32 +1089,12 @@ console.log(Object.keys(obj));
 (function(){
     var a = b = 3;
 })();
-console.log("a defined? " + (typeof a !== 'undefined'));
-console.log("b defined? " + (typeof b !== 'undefined'));
+console.log("a defined? " + (typeof a !== 'undefined'));                a defined? false
+console.log("b defined? " + (typeof b !== 'undefined'));                b defined? true
 
-========================================================================
-TIPS FOR SOLVING OUTPUT-BASED QUESTIONS:
-========================================================================
 
-1. Always trace through the code step by step
-2. Pay attention to variable hoisting and scope
-3. Understand the difference between == and === comparisons
-4. Remember how 'this' binding works in different contexts
-5. Know the order of execution in the event loop
-6. Understand type coercion rules
-7. Be familiar with array and object reference behavior
-8. Practice async/await and Promise execution order
 
-COMMON JAVASCRIPT GOTCHAS:
-=========================
 
-• Variables declared with 'var' are hoisted and initialized with undefined
-• Arrow functions don't have their own 'this' context
-• Objects are compared by reference, not by value
-• Type coercion can produce unexpected results
-• The event loop prioritizes microtasks over macrotasks
-• Closures retain access to outer scope variables
 
-========================================================================
-End of Document - Total Questions: 100
-========================================================================
+
+
