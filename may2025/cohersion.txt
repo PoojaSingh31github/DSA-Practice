@@ -482,7 +482,7 @@ PROTOTYPES & CLASSES
 
 38. What's the output?
 class Chameleon {
-  static colorChange(newColor){                 ye static class k upr h kisis instances k upr ni (mas it cannot b use but any otyher 
+  static colorChange(newColor){                 ye static class k upr h kisis instances k upr ni (mas it cannot b use but any other 
     this.newColor = newColor;                      to ye bs chameloen.colorChange se access kiya ja sakta h not by freddie.colorChange
     return this.newColor;
   }
@@ -1091,10 +1091,5 @@ console.log(Object.keys(obj));
 })();
 console.log("a defined? " + (typeof a !== 'undefined'));                a defined? false
 console.log("b defined? " + (typeof b !== 'undefined'));                b defined? true
-
-
-
-
-
 
 
