@@ -1,0 +1,7 @@
+inorder, preorder, postorder, level order travsal 
+
+sorted array into binary tree
+
+maximum depth of tree
+
+same tree, symetric tree

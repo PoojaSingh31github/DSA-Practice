@@ -122,7 +122,7 @@ function debounce(func, delay) {
 }
 
 function throttle(func, delay) {
-  let timer = false;
+  let timer;
   return function() {
     if (!timer) {
       func();
