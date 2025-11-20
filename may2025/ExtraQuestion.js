@@ -24,6 +24,8 @@ console.log(arr)
 
 
 
+
+
 first = 0
 second = 0
 third = 0 
@@ -42,6 +44,21 @@ for (let i of arr){
     
 }
 console.log(third , first , second)
+
+
+// subset
+arr = [1,2,3,4]
+
+let res = [[]]
+for (let i in arr){
+    let newsubset = []
+    for (let subset of res){
+        newsubset.push([...subset, i])
+    }
+    res = [...res, ...newsubset]
+    
+}
+// console.log(res)
 
 
 function twoSum(arr, target) {
