@@ -104,15 +104,9 @@ console.log(neww)
 
 
 
-
-
-
 // var global variable 
 // console ni hone deta pr for loop chl chuka hota h 
-
 // let k s=ace me tavi chlta h jb internal block ka work finish hpo ajye tb formlopp chlta h idr... it craete clouse
-
-
 // idr count variable ni le skati ?? 
 // setintreval ? 
 // no ideaa
