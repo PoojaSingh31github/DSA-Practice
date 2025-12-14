@@ -26,6 +26,63 @@ function recusion(navTree, res = []) {
   return res;
 }
 
+const users = [
+  { id: 1, name: "A", role: "admin", department: "IT", active: true },
+  { id: 2, name: "B", role: "user", department: "HR", active: false },
+  { id: 3, name: "C", role: "admin", department: "Finance", active: true },
+  { id: 4, name: "D", role: "user", department: "IT", active: true },
+  { id: 5, name: "E", role: "manager", department: "HR", active: true },
+  { id: 6, name: "F", role: "admin", department: "IT", active: false },
+  { id: 7, name: "G", role: "user", department: "Finance", active: true },
+];
+
+// output :
+// {
+//   admin: {
+//     IT: [
+//       { id: 1, name: "A", role: "admin", department: "IT", active: true },
+//       { id: 6, name: "F", role: "admin", department: "IT", active: false }
+//     ],
+//     Finance: [
+//       { id: 3, name: "C", role: "admin", department: "Finance", active: true }
+//     ]
+//   },
+//   user: {
+//     HR: [
+//       { id: 2, name: "B", role: "user", department: "HR", active: false }
+//     ],
+//     IT: [
+//       { id: 4, name: "D", role: "user", department: "IT", active: true }
+//     ],
+//     Finance: [
+//       { id: 7, name: "G", role: "user", department: "Finance", active: true }
+//     ]
+//   },
+//   manager: {
+//     HR: [
+//       { id: 5, name: "E", role: "manager", department: "HR", active: true }
+//     ]
+//   }
+// }
+
+let ans = users.reduce((acc, curr)=>{
+     const {role, department} = curr;
+     
+     if (!acc[role]){
+         acc[role] = {}
+     }
+     
+     if (!acc[role][department]){
+         acc[role][department] = []
+     }
+     
+     acc[role][department].push(curr)
+     return acc
+}, {})
+console.log(ans)
+
+
+
 console.log(recusion(navTree));
 // output - 4 (Count total nodes in nested tree)
 
@@ -209,6 +266,27 @@ function restedobj(obj, key = "", res = []) {
 }
 console.log(restedobj(object));
 
+let input = {a:1,b:{c:2,d:{e:3}}}
+// Output: { "a":1,"b.c":2,"b.d.e":3 }
+
+function rec(obj,key="", res={}){
+   for (let i in obj){
+       let newkey = key ? key+"."+i : i
+
+       
+       if (typeof obj[i] === "object"){
+           rec(obj[i], newkey,res)
+       }else{
+           res[newkey] = obj[i]
+       }
+   }
+   return res
+}
+
+console.log(rec(input))
+
+
+
 const obj3 = [
   { id: 1, info: { type: "a" } },
   { id: 2, info: { type: "b" } },
@@ -274,3 +352,6 @@ function fromDotNotation(obj, key = "", res = {}) {
   return res;
 }
 console.log(fromDotNotation(obj6));
+
+
+
