@@ -1,0 +1,68 @@
+
+
+ Array.prototype.FuncMap = function(callback){
+     let arr = this;
+     let res = [];
+     for (i=0; i<arr.length; i++){
+         res[i] = callback(arr[i],i,arr)
+     }
+     return res
+ }
+ 
+ Array.prototype.FuncForeEach = function(callback){
+     let arr = this;
+     for (i=0; i<arr.length; i++){
+     callback(arr[i],i,arr)
+     }
+ }
+ Array.prototype.FuncReduce = function(callback, initial){
+     let arr = this;
+     let acc = initial
+     for (i=0; i<arr.length; i++){
+     callback(arr[i],i,arr)
+     }
+ }
+ 
+ 
+ let arraya = [1,2,3,4]
+ 
+ arraya.FuncForeEach((ele, i, arr)=>{
+     console.log(ele*2, i, arr)
+     
+ })
+ const ans = arraya.FuncReduce((ele,curr)=> ele+curr,0)
+ 
+ console.log(arraya)
+
+Array.prototype.myReduce = function(callback, initial){
+    let arr = this;
+    let acc = initial;
+    
+    for (let i=0;i<arr.length;i++){
+        acc = callback(acc+initial,arr[i],i, arr )
+    }
+    return acc
+}
+
+Array.prototype.myFilter = function(callback){
+    let arr = this;
+    let res = []
+    for (i=0;i<arr.length;i++){
+       if (callback(arr[i],i,arr)){
+           res.push(arr[i])
+       }
+    }
+    return res
+}
+
+let arr = [1,2,3,4,5, 6]
+let ans = arr.myReduce((acc, curr)=> acc+curr, 0)
+console.log(ans)
+
+
+let filterAns = arr.myFilter((ele)=>ele%2!==0)
+console.log(filterAns)
+
+
+
+

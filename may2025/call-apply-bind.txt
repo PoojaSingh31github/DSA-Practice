@@ -1,0 +1,644 @@
+const obj = { a: 10 };
+function test() { console.log(this.a); }
+
+test.call(obj);                                     10
+
+const obj = { a: 50 };
+function test(b) { console.log(this.a + b); }
+
+test.call(obj, 10);                                  60
+
+const obj = { x: 2 };
+function foo(a, b) { console.log(this.x + a + b); }
+  
+foo.apply(obj, [3, 4]);                                9                             
+
+const obj = { name: "Pooju" };
+function greet() { console.log("Hi " + this.name); }
+
+const fn = greet.bind(obj);
+fn();                                                 hi puoju
+
+5
+var x = 20;
+const obj = { x: 50 };
+function test() { console.log(this.x); }
+
+test();                                                20
+test.call(obj);                                        50
+
+6
+function f() {
+  console.log(this);
+}
+f.call(null);                                           undefine
+
+7
+const obj = { name: "A" };
+
+function show() { return this.name; }
+
+console.log(show.apply(obj));                          a 
+
+8
+const obj = { val: 5 };
+function inc(n) { console.log(this.val + n); }
+
+inc.bind(obj)(10);                                      15
+
+9
+const obj1 = { a: 5 };
+const obj2 = { a: 20 };
+
+function print() { console.log(this.a); }
+
+print.bind(obj1).call(obj2);                           5         after bind not other method with work, here obj1 is oermanemntly blocked to this keyword
+
+10
+const obj = { a: 5 };
+function test() { console.log(this.a); }
+
+const x = test.bind(obj);
+x.apply({ a: 100 });                                   5
+
+11
+const obj = { a: 15 };
+function test(a, b) { console.log(a + b + this.a); }
+
+test.apply(obj, [5, 5]);                                 25
+
+12
+var a = 100;
+
+const obj = {
+  a: 50,
+  f: function() {
+    console.log(this.a);
+  }
+};
+
+const x = obj.f;
+x();                                                  100,  var a is coming from window.a
+
+13
+const obj = { num: 10 };
+
+function add(n) { return this.num + n; }
+
+console.log(add.call(obj, 5));
+
+14
+const obj = { n: 7 };
+
+function test() { console.log(this.n); }
+
+test.call(null);
+
+15
+const obj = { a: 10 };
+
+function f() { console.log(this.a); }
+
+const y = f.bind({ a: 99 }).bind(obj);
+y();
+
+16
+let name = "global";
+
+const obj = {
+  name: "local",
+  print: function () {
+    console.log(this.name);
+  }
+};
+
+setTimeout(obj.print, 0);
+
+17
+function show() { console.log(this.x); }
+
+const a = { x: 1 };
+const b = { x: 2 };
+
+show.bind(a).call(b);
+
+18
+var x = 10;
+
+const obj = {
+  x: 30,
+  getX: function () {
+    return this.x;
+  }
+};
+
+const fn = obj.getX;
+console.log(fn.call({ x: 50 }));
+
+19
+const obj = { x: 10 };
+function t() { console.log(this.x); }
+
+t.call(obj).call;
+
+20
+function foo() { console.log(this.length); }
+
+var length = 10;
+
+let obj = { length: 5 };
+
+foo.call(obj);
+
+21
+function foo(a, b) {
+  console.log(this.x, a, b);
+}
+
+foo.apply({ x: 99 }, []);
+
+22
+const obj = { a: 1 };
+
+function test() {
+  return this.a;
+}
+
+console.log(test.bind(obj)());
+
+23
+var a = 30;
+
+const obj = { a: 100 };
+
+function f() { console.log(this.a); }
+
+f.apply(null);
+
+24
+function test() {
+  console.log(this);
+}
+
+test.bind(5)();
+
+25
+const obj = { x: 20 };
+function show() { console.log(this.x); }
+
+show.call(obj).apply;
+
+26
+var x = 40;
+
+const obj = {
+  x: 99,
+  demo() {
+    console.log(this.x);
+  }
+};
+
+obj.demo.call({ x: 77 });
+
+27
+var x = 10;
+
+function y() {
+  console.log(this.x);
+}
+
+y.call({ x: 50 });
+
+28
+const obj = { x: 100 };
+
+function fun(a) {
+  console.log(a, this.x);
+}
+
+fun.apply(obj, [5]);
+
+29
+function calc(a, b) {
+  console.log(this.c + a + b);
+}
+
+calc.call({ c: 10 }, 5, 5);
+
+30
+const obj = { m: 10 };
+
+function show(n) {
+  console.log(this.m * n);
+}
+
+show.bind(obj, 5)();
+
+31
+const a = { x: 10 };
+const b = { x: 20 };
+
+function print() { console.log(this.x); }
+
+const p = print.bind(a);
+p.call(b);
+
+32
+var x = "global";
+
+const obj = {
+  x: "local",
+  fun: function () {
+    console.log(this.x);
+  }
+};
+
+(obj.fun.bind({ x: "bound" }))();
+
+33
+const obj = { a: 1 };
+function update(n) {
+  console.log(this.a + n);
+}
+
+update.call(obj, 5);
+update.apply(obj, [5]);
+
+34
+function show() {
+  console.log(this.value);
+}
+
+const obj = { value: 55 };
+
+show.bind(obj)();
+
+35
+function a() {
+  return this.b;
+}
+
+const obj = { b: 9 };
+
+console.log(a.call(obj));                               9
+
+36
+function demo() { console.log(this.x); }
+
+var x = 99;
+demo();
+demo.call({ x: 1 });
+
+37
+var x = 10;
+
+let obj = { x: 20 };
+
+function fun() { console.log(this.x); }
+
+const bound = fun.bind(obj);
+bound();
+
+38
+let obj1 = { x: 5 };
+let obj2 = { x: 100 };
+
+function test() {
+  console.log(this.x);
+}
+
+test.bind(obj1).bind(obj2)();
+
+39
+let obj = { v: 10 };
+function print(n) {
+  console.log(this.v + n);
+}
+
+print.apply(obj, [20]);                     30
+
+40
+const obj = { a: 10 };
+function test(a, b) {
+  console.log(this.a + a + b);
+}
+
+test.call(obj, 2, 3);                       15                     
+
+41
+function f() { console.log(this.a); }
+
+const o = { a: 1 };
+const x = f.bind(o);
+
+f.call({ a: 5 });                              5
+x.call({ a: 5 });                              1
+
+42
+var a = 10;                                  
+
+const obj = {
+  a: 50,
+  run() {
+    console.log(this.a);
+  }
+};
+
+setTimeout(obj.run.bind(obj), 0);                50         settimeout will it self call it (it says to broser i have a functiona and need to call it )
+
+43
+function show() { console.log(this.id); }
+
+const obj = { id: 777 };
+
+show.apply(obj);                               777
+
+44
+function sum(a) { return this.x + a; }
+
+const obj = { x: 50 };
+
+console.log(sum.bind(obj)(10));                  60
+
+45
+var x = 20;
+
+const fn = function() {
+  console.log(this.x);
+}.bind({ x: 100 });
+
+fn();                                            100                                      
+
+46
+let a = { v: 10 };
+function t() { console.log(this.v); }
+
+t.call(a).bind;                                   10 and undefine 
+
+47
+let name = "global";
+
+const obj = {
+  name: "local",
+  show: function () {
+    console.log(this.name);
+  }
+};
+
+const s = obj.show;
+s.call(obj);                                     local
+
+48
+var x = 5;
+
+const obj = { x: 20 };
+
+function check(a) {
+  console.log(this.x + a);
+}
+
+check.bind(obj)(5);                              25
+
+49
+function foo() {
+  console.log(this.a);
+}
+
+var a = 99;
+
+foo.apply({ a: 1 });                              1
+
+50
+function foo() { console.log(this.a); }
+
+const obj = { a: 100 };
+
+foo.bind(obj).call({ a: 999 });                      100  
+
+51
+const obj = { a: 10 };
+function f(a) { console.log(this.a + a); }
+
+const fun = f.bind(obj);
+fun(5);                                                 15
+
+
+
+
+
+
+
+
+
+
+1. Basic class with call
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+
+  greet(age) {
+    console.log(`${this.name} is ${age}`);
+  }
+}
+
+const p1 = new Person("Alice");
+
+p1.greet.call({ name: "Bob" }, 25);                    bob is 25       
+
+
+Question: What is the output?
+
+🔥 2. Class method + apply
+class Animal {
+  constructor(type) {
+    this.type = type;
+  }
+
+  speak(sound) {
+    console.log(`${this.type} says ${sound}`);
+  }
+}
+
+const dog = new Animal("Dog");
+dog.speak.apply({ type: "Cat" }, ["Meow"]);             cat says meow
+
+
+Question: Output?
+
+🔥 3. Bind with class method
+class Counter {
+  constructor() {
+    this.count = 0;
+  }
+  increment() {
+    this.count++;
+    console.log(this.count);
+  }
+}
+
+const c = new Counter();
+const fn = c.increment;
+fn(); // what happens?                          Cannot read properties of undefined (reading 'count'                      
+
+
+Follow-up: Fix it using bind.
+
+🔥 4. Borrowing class method with call
+class A {
+  constructor(x) { this.x = x; }
+  print() { console.log(this.x); }
+}
+
+class B {
+  constructor(x) { this.x = x; }
+}
+
+const b = new B(100);
+const a = new A(50);
+a.print.call(b);                                100
+
+
+Question: Output?
+
+🔥 5. Bind + event listener inside class
+class Button {
+  constructor(name) {
+    this.name = name;
+  }
+  click() {
+    console.log(`${this.name} clicked`);
+  }
+}
+
+const btn = new Button("Submit");
+document.body.addEventListener("click", btn.click); // What happens?               document is not defined
+
+
+Follow-up: Fix it using bind.
+
+🔥 6. Multiple bind calls
+class Test {
+  constructor() { this.x = 10; }
+  show() { console.log(this.x); }
+}
+
+const t = new Test();
+const f = t.show.bind({x: 20}).bind({x: 30});
+f();                                                      20
+
+
+Question: Output?
+
+🔥 7. Using apply with arguments
+class Person {
+  constructor(name) { this.name = name; }
+  greet(age, city) { console.log(`${this.name} is ${age} from ${city}`); }
+}
+
+const p = new Person("John");
+p.greet.apply({name: "Doe"}, [25, "NY"]);                           Doe is 25 from NY
+  
+
+Question: Output?
+
+🔥 8. Call a static method
+class Helper {
+  static greet(msg) { console.log(msg); }
+}
+
+Helper.greet.call(null, "Hello");                         hello
+
+
+Question: Output?
+
+🔥 9. call inside constructor
+class A {
+  constructor() { console.log("A:", this.name); }
+}
+
+class B extends A {
+  constructor() {
+    super();
+    this.name = "B";
+    A.prototype.constructor.call(this);
+  }
+}
+
+new B();                                                Class constructor A cannot be invoked without 'new'
+
+
+Question: Output?
+
+🔥 10. Using bind in constructor
+class Logger {
+  constructor(msg) {
+    this.msg = msg;
+    this.log = this.log.bind(this);
+  }
+  log() {
+    console.log(this.msg);
+  }
+}
+
+const l = new Logger("Hi");
+setTimeout(l.log, 0); // Output?                                     hi
+
+🔥 11. Method borrowing
+class A {
+  constructor(x) { this.x = x; }
+  show() { console.log(this.x); }
+}
+
+class B {}
+
+const b = new B();
+A.prototype.show.call(b, 50); // Will this work? Output?
+
+🔥 12. Arrow function inside class
+class Test {
+  x = 100;
+  show = () => console.log(this.x);
+}
+
+const t = new Test();
+const fn = t.show;
+fn.call({x: 200});
+
+
+Question: Output?
+
+🔥 13. bind + setTimeout
+class Counter {
+  constructor() { this.count = 0; }
+  inc() { this.count++; console.log(this.count); }
+}
+
+const c = new Counter();
+setTimeout(c.inc, 0);       // Output?                          NaN
+setTimeout(c.inc.bind(c), 0); // Output?                        1
+
+🔥 14. Overwriting bind
+class Test {
+  constructor() { this.val = 10; }
+  show() { console.log(this.val); }
+}
+
+const t = new Test();
+const f = t.show.bind({val: 20});
+f.call({val: 30}); // Output?                                  20
+
+🔥 15. Using call on super method
+class A {
+  greet() { console.log("Hi from A"); }
+}
+
+class B extends A {
+  greet() {
+    super.greet.call(this);
+    console.log("Hi from B");
+  }
+}
+
+new B().greet();                                                Hi from A
+                                                                Hi from B
