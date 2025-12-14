@@ -24,6 +24,8 @@ console.log(arr)
 
 
 
+
+
 first = 0
 second = 0
 third = 0 
@@ -42,6 +44,21 @@ for (let i of arr){
     
 }
 console.log(third , first , second)
+
+
+// subset
+arr = [1,2,3,4]
+
+let res = [[]]
+for (let i in arr){
+    let newsubset = []
+    for (let subset of res){
+        newsubset.push([...subset, i])
+    }
+    res = [...res, ...newsubset]
+    
+}
+// console.log(res)
 
 
 function twoSum(arr, target) {
@@ -194,13 +211,15 @@ function throttle(func, delay) {
   console.log(kadane([-2,1,-3,4,-1,2,1,-5,4]))
 
 
-
-
-
-
-
-
-
+// wriote an function whcih will try to call same function again and gaain tiull 4-5 time after some delay 
+function sum(a,b){
+    return a+b 
+}
+for (let i=0; i<4;i++){
+    const tryy = setTimeout(()=>{
+        console.log(sum(2,4))
+    }, i*1000)
+}
 
 
 
